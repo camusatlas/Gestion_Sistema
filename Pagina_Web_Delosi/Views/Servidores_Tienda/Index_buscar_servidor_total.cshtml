@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Pagina_Web_Delosi.Models.Servidores_Total>
+
+@{
+    ViewBag.Title = "Index_buscar_servidor_total";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Busqueda de Servidores</title>
+</head>
+<body>
+    <h2 class="text-center">Busqueda de Servidores</h2>
+    <hr />
+    <p>
+        @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <div class="row">
+        <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
+            <thead class="text-center">
+                <tr style="font-size:12px">
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.cod_marca)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.cod_tienda)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.tienda)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.ip_servidor)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.nom_servidor)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'></th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr class="text-center" style="font-size:12px;">
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.cod_marca)
+                    </td>
+                    <td style="background-color: #dbd1d0;">
+                        @Html.DisplayFor(modelItem => item.cod_tienda)
+                    </td>
+                    <td style="background-color: #dbd1d0;">
+                        @Html.DisplayFor(modelItem => item.tienda)
+                    </td>
+                    <td style="background-color: #dbd1d0;">
+                        @Html.DisplayFor(modelItem => item.ip_servidor)
+                    </td>
+                    <td style="background-color: #dbd1d0;">
+                        @Html.DisplayFor(modelItem => item.nom_servidor)
+                    </td>
+                    <td style="background-color: #dbd1d0; font-size:12px;">
+                        @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <br />
+        
+    </div>
+    <script>
+        bus_sec * function () {
+            $.post(
+                '/Seccion/bus_sec', {
+                tipo_bus: $('#cb_sec').val(),//--Este es el id del combobox
+                datos_bus_sec: $('#dato_bus_sec').val() //-- este es el ide de la caja de texto
+            }, function (res) {
+                $('#tabla_seccion_bus').html(res)//-- id de la tabla
+            });
+        };
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+    </script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+    </script>
+    <script src="~/Content/JS/Paginacion.js"></script>
+</body>
+</html>

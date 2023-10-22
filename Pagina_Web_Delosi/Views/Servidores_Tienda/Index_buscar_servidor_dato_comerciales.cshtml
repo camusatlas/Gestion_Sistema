@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Pagina_Web_Delosi.Models.Servidores_Total>
+
+@{
+    ViewBag.Title = "IndexBuscarServidor_Datos_Comerciales";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Datos comerciales de la Tienda</title>
+</head>
+<body class="hidden">
+    <h3 class="text-center">Datos comerciales de la Tienda</h3>
+    <hr />
+    <p>
+        @Html.ActionLink("Nuevo", "CreateServidor", null, new { @class = "btn btn-primary" })
+    </p>
+    <div class="row">
+        <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
+            <thead class="text-center">
+                <tr style="font-size:12px">
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.tienda)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.version_facturador)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.usuario_crea)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.fecha_crea)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'></th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr class="text-center" style="font-size:12px;">
+                    <td style="background-color: #dbd1d0;">
+                        @Html.DisplayFor(modelItem => item.tienda)
+                    </td>
+                    <td style="background-color: #dbd1d0;">
+                        @Html.DisplayFor(modelItem => item.version_facturador)
+                    </td>
+                    <td style="background-color: #dbd1d0;">
+                        @Html.DisplayFor(modelItem => item.usuario_crea)
+                    </td>
+                    <td style="background-color: #dbd1d0;">
+                        @Html.DisplayFor(modelItem => item.fecha_crea)
+                    </td>
+                    <td style="background-color: #dbd1d0; font-size:12px;">
+                        @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+    </script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+    </script>
+    <script src="~/Content/JS/Paginacion.js"></script>
+
+</body>
+</html>

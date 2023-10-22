@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Equpos de Delosi</title>
+    <link rel="icon" href="../Img/TITI.jpg" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/CSS/Loaders.css" rel="stylesheet" />
+    <link href="~/Content/CSS/EstiloMenu.css" rel="stylesheet" />
+</head>
+<body class="hidden">
+    <div class="centrado" id="onload">
+        <div class="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    @**------------------------------------------------------------*@
+    <header class="header">
+        <div class="container">
+            <div class="btn-menu">
+                <label for="btn-menu">☰</label>
+            </div>
+
+            <nav class="menu">
+                <a>@Html.ActionLink("Inicio", "Index", "Home")</a>
+                <a>@Html.ActionLink("Salir", "CerrarSesion", "Login")</a>
+            </nav>
+        </div>
+    </header>
+    <div class="capa"></div>
+    <input type="checkbox" id="btn-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <img src="../Img/icono_menu_2.jpg" style="width: 80px; height: 80px; justify-content: center; align-items: center; " />
+            <nav>
+                <a href="#">@Html.ActionLink("Busque de Servidores", "Index_buscar_servidor_total", "Servidores_Tienda")</a>
+                <a href="#">@Html.ActionLink("Datos de tienda", "Index_buscar_servidor_dato_comerciales", "Servidores_Tienda")</a>
+                <a href="#">@Html.ActionLink("Datos de La Tienda", "Index_buscar_tienda_total", "Tienda")</a>
+                <a href="#">@Html.ActionLink("Caracteristica de Servidores", "Index_buscar_servidor_list_caracteristicas", "Servidores_Tienda")</a>
+            </nav>
+            <label for="btn-menu">✖️</label>
+        </div>
+    </div>
+    @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <img src="../Img/icono_menu_2.jpg" style="width: 40px; height: 40px;" />
+                    <ul class="navbar-nav ms-4">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                                Busqueda de Servidores
+                            </a>
+                            <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                                <li>@Html.ActionLink("Busque de Servidores", "Index_buscar_servidor_total", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
+                                <li>@Html.ActionLink("Datos de tienda", "Index_buscar_servidor_dato_comerciales", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
+                                <li>@Html.ActionLink("Datos de La Tienda", "Index_buscar_tienda_total", "Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
+                                <li>@Html.ActionLink("Caracteristica de Servidores", "Index_buscar_servidor_list_caracteristicas", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                                Busqueda de Punto de Venta
+                            </a>
+                            <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                                <li>@Html.ActionLink("Punto de Venta", "IndexBuscarPuntoVenta", "WorkStation", new { area = "" }, new { @class = "nav-link dropdown-item text-center" })</li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                                Opciones
+                            </a>
+                            <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                                <li>@Html.ActionLink("Salir", "CerrarSesion", "Login", new { area = "" }, new { @class = "nav-link dropdown-item text-center" })</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    *@
+    <div class="container body-content">
+        @RenderBody()
+        <hr style="height:5px;" />
+        <footer>
+            @*
+            <p class="text-end">&copy; @DateTime.Now.Year - Autor - Carlos Inga</p>
+            *@
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="~/Content/JS/Loaders.js"></script>
+
+</body>
+</html>
