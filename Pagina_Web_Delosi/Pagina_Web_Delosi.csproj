@@ -274,6 +274,8 @@
     <Content Include="Content\CSS\login.css" />
     <Content Include="Content\CSS\login2.css" />
     <Content Include="Content\CSS\Menu_desplegable.css" />
+    <Content Include="Content\CSS\StylePerfil.css" />
+    <Content Include="Content\JS\JavaScriptPerfile.js" />
     <Content Include="Content\JS\JQuery.js" />
     <Content Include="Content\JS\Loaders.js" />
     <Content Include="Content\JS\Menu_desplegable.js" />
