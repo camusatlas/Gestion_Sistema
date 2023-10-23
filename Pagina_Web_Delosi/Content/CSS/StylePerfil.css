@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+﻿
 
 :root {
     --color-barra-lateral: rgb(255,255,255);
@@ -381,3 +381,8 @@ main {
         padding: var(--padding) 0;
         overflow: hidden;
     }
+#sidemenu #nomitem #name {
+    font-size: 24px;
+    padding: var(--padding) 0;
+    overflow: hidden;
+}

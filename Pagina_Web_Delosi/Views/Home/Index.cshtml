@@ -1,12 +1,31 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <html>
 <head>
-    
+    <link href="~/Content/CSS/StylePerfil.css" rel="stylesheet" />
+    <link href="~/Content/CSS/Loaders.css" rel="stylesheet" />
+    <link href="~/Content/CSS/Iconos.css" rel="stylesheet" />
+
 </head>
 <body>
-
+    <main>
+        <div class="contenedor">
+            <div class="items">
+                <div id="item">Servidor</div>
+            </div>
+            <div class="items">
+                <div id="item">Workstation</div>
+            </div>
+            <div class="items">
+                <div id="item"></div>
+            </div>
+            <div class="items">Item 4</div>
+        </div>
+    </main>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </body>
 </html>

@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Index_buscar_tienda_total";
 }
-
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <!DOCTYPE html>
 
 <html>
@@ -12,67 +14,78 @@
     <title>Datos de la Tienda</title>
 </head>
 <body>
-    <h3 class="text-center">Datos de la Tienda</h3>
-    <hr />
-    <p>
-        @Html.ActionLink("Nuevo", "CreateServidor", null, new { @class = "btn btn-primary" })
-    </p>
-    <div class="row">
-        <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
-            <thead class="text-center">
-                <tr style="font-size:12px">
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.tienda)
-                    </th>
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.distrito)
-                    </th>
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.mail_tienda)
-                    </th>
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.gte_area)
-                    </th>
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.mail_gte_area)
-                    </th>
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.tlfno_gte_area)
-                    </th>
-                    <th style='background-color: #337ab7'></th>
-                </tr>
-            </thead>
+    <main>
+        <h3 class="text-center">Datos de la Tienda</h3>
+        <hr />
+        <p>
+            @Html.ActionLink("Nuevo", "CreateServidor", null, new { @class = "btn btn-primary" })
+        </p>
+        <div class="row">
+            <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
+                <thead class="text-center">
+                    <tr style="font-size:12px">
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.tienda)
+                        </th>
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.distrito)
+                        </th>
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.mail_tienda)
+                        </th>
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.gte_area)
+                        </th>
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.mail_gte_area)
+                        </th>
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.tlfno_gte_area)
+                        </th>
+                        <th style='background-color: #337ab7'></th>
+                    </tr>
+                </thead>
 
-            @foreach (var item in Model)
-            {
-                <tr class="text-center" style="font-size:12px;">
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.tienda)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.distrito)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.mail_tienda)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.gte_area)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.mail_gte_area)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.tlfno_gte_area)
-                    </td>
-                    <td style="background-color: #dbd1d0; font-size:12px;">
-                        @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
-                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
-                    </td>
-                </tr>
-            }
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center" style="font-size:12px;">
+                        <td style="background-color: #dbd1d0; ">
+                            @Html.DisplayFor(modelItem => item.tienda)
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @Html.DisplayFor(modelItem => item.distrito)
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @Html.DisplayFor(modelItem => item.mail_tienda)
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @Html.DisplayFor(modelItem => item.gte_area)
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @Html.DisplayFor(modelItem => item.mail_gte_area)
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @Html.DisplayFor(modelItem => item.tlfno_gte_area)
+                        </td>
+                        <td style="background-color: #dbd1d0; font-size:12px;">
+                            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
 
-        </table>
-    </div>
+            </table>
+        </div>
+        <hr style="height:5px;" />
+    </main>
+    <!---->
+    <script type="module"
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="~/Content/JS/JavaScriptPerfile.js"></script>
+    <!---->
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>

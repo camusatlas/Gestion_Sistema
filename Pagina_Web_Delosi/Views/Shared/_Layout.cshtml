@@ -7,6 +7,7 @@
     <title>Registro de Equpos de Delosi</title>
     <link rel="icon" href="../Img/TITI.jpg" />
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link href="~/Content/CSS/StylePerfil.css" rel="stylesheet" />
     <link href="~/Content/CSS/Loaders.css" rel="stylesheet" />
@@ -39,7 +40,7 @@
         <div>
             <div class="nombre-pagina">
                 <ion-icon id="cloud" name="cloud-outline"></ion-icon>
-                <span>CG & LL</span>
+                <span></span>
             </div>
         </div>
         <div id="profile">
@@ -50,32 +51,37 @@
         <div class="linea"></div>
         <div class="itemseparator"></div>
 
-        <nav class="navegacion">
+        <nav id="" class="navegacion">
             <ul>
                 <li>
-                    <a id="inbox" href="#">
-                        <ion-icon name="mail-unread-outline"></ion-icon>
-                        <span>SMS</span>
-                    </a>
+                    <img src="~/Img/Iconos/hogar.png" style="left: 40px; width:40px " />
+                    @Html.ActionLink("Inicio", "Index", "Home")
                 </li>
+                <div class="itemseparator"></div>
                 <li>
-                    <a href="#">
-                        <ion-icon name="star-outline"></ion-icon>
-                        <span>Starred</span>
-                    </a>
+                    <img src="~/Img/Iconos/servidor.png" style="left: 45px; width:45px " />
+                    @Html.ActionLink("Servidores", "Index_buscar_servidor_total", "Servidores_Tienda")
                 </li>
+                <div class="itemseparator"></div>
+                <li>
+                    <img src="~/Img/Iconos/punto-de-venta.png" style="left: 40px; width:40px " />
+                    @Html.ActionLink("Workstation", "IndexBuscarPuntoVenta", "WorkStation")
+                </li>
+                <div class="itemseparator"></div>
                 <li>
                     <a href="#">
                         <ion-icon name="paper-plane-outline"></ion-icon>
                         <span>Sent</span>
                     </a>
                 </li>
+                <div class="itemseparator"></div>
                 <li>
                     <a href="#">
                         <ion-icon name="document-text-outline"></ion-icon>
                         <span>Drafts</span>
                     </a>
                 </li>
+                <div class="itemseparator"></div>
                 <li>
                     <a href="#">
                         <ion-icon name="bookmark-outline"></ion-icon>
@@ -115,11 +121,9 @@
             <div class="usuario">
                 <div class="info-usuario">
                     <div class="nombre-email">
-                        <nav class="navegacion">
-                            <a href="#">
-                                <span>@Html.ActionLink("Salir", "CerrarSesion", "Login")</span>
-                            </a>
-                        </nav>
+                        <div class="navegacion">
+                            @Html.ActionLink("Salir", "CerrarSesion", "Login")
+                        </div>
                         <span class="nombre">prov293@franquiciasperu.com</span>
                     </div>
                 </div>
@@ -128,7 +132,7 @@
     </div>
 
     <main>
-
+        
     </main>
 
     <script type="module"
@@ -179,7 +183,6 @@
     *@
     <div class="container body-content">
         @RenderBody()
-        <hr style="height:5px;" />
         <footer>
             @*
                 <p class="text-end">&copy; @DateTime.Now.Year - Autor - Carlos Inga</p>

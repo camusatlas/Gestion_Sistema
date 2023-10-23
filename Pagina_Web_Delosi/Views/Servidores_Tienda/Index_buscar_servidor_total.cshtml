@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Index_buscar_servidor_total";
 }
-
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <!DOCTYPE html>
 
 <html>
@@ -13,63 +15,68 @@
 
 </head>
 <body>
-    <h2 class="text-center">Busqueda de Servidores</h2>
-    <hr />
-    <p>
-        @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary" })
-    </p>
-    <div class="row">
-        <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
-            <thead class="text-center">
-                <tr style="font-size:12px">
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.cod_marca)
-                    </th>
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.cod_tienda)
-                    </th>
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.tienda)
-                    </th>
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.ip_servidor)
-                    </th>
-                    <th style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.nom_servidor)
-                    </th>
-                    <th style='background-color: #337ab7; color:white'></th>
-                </tr>
-            </thead>
+    <main>
+        <h2 class="text-center">Registro de Servidores</h2>
+        <hr />
+        <p>
+            @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <div class="row">
+            <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
+                <thead class="text-center">
+                    <tr style="font-size:12px">
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.cod_marca)
+                        </th>
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.cod_tienda)
+                        </th>
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.tienda)
+                        </th>
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.ip_servidor)
+                        </th>
+                        <th style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.nom_servidor)
+                        </th>
+                        <th style='background-color: #337ab7; color:white'></th>
+                    </tr>
+                </thead>
 
-            @foreach (var item in Model)
-            {
-                <tr class="text-center" style="font-size:12px;">
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.cod_marca)
-                    </td>
-                    <td style="background-color: #dbd1d0;">
-                        @Html.DisplayFor(modelItem => item.cod_tienda)
-                    </td>
-                    <td style="background-color: #dbd1d0;">
-                        @Html.DisplayFor(modelItem => item.tienda)
-                    </td>
-                    <td style="background-color: #dbd1d0;">
-                        @Html.DisplayFor(modelItem => item.ip_servidor)
-                    </td>
-                    <td style="background-color: #dbd1d0;">
-                        @Html.DisplayFor(modelItem => item.nom_servidor)
-                    </td>
-                    <td style="background-color: #dbd1d0; font-size:12px;">
-                        @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
-                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
-                    </td>
-                </tr>
-            }
-        </table>
-        <br />
-        <br />
-        
-    </div>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center" style="font-size:12px;">
+                        <td style="background-color: #dbd1d0; ">
+                            @Html.DisplayFor(modelItem => item.cod_marca)
+                        </td>
+                        <td style="background-color: #dbd1d0;">
+                            @Html.DisplayFor(modelItem => item.cod_tienda)
+                        </td>
+                        <td style="background-color: #dbd1d0;">
+                            @Html.DisplayFor(modelItem => item.tienda)
+                        </td>
+                        <td style="background-color: #dbd1d0;">
+                            @Html.DisplayFor(modelItem => item.ip_servidor)
+                        </td>
+                        <td style="background-color: #dbd1d0;">
+                            @Html.DisplayFor(modelItem => item.nom_servidor)
+                        </td>
+                        <td style="background-color: #dbd1d0; font-size:12px;">
+                            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <br />
+
+        </div>
+        <hr style="height:5px;" />
+    </main>
+
+
     <script>
         bus_sec * function () {
             $.post(

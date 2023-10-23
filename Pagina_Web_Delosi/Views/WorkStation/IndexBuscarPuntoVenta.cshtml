@@ -12,59 +12,62 @@
     <title>Busquedad de WorkStation</title>
 </head>
 <body>
-    <h3 class="text-center">Busquedad de WorkStation</h3>
-    <hr />
-    <p>
-        @Html.ActionLink("Nuevo", "CreatePuntoVenta", null, new { @class = "btn btn-primary" })
-    </p>
-    <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
-        <thead class="text-center">
-            <tr style="font-size:12px">
-                <th style='background-color: #337ab7; color:white'>
-                    @Html.DisplayNameFor(model => model.tienda)
-                </th>
-                <th style='background-color: #337ab7; color:white'>
-                    @Html.DisplayNameFor(model => model.caja)
-                </th>
-                <th style='background-color: #337ab7; color:white'>
-                    @Html.DisplayNameFor(model => model.ip_workstation)
-                </th>
-                <th style='background-color: #337ab7; color:white'>
-                    @Html.DisplayNameFor(model => model.hostname)
-                </th>
-                <th style='background-color: #337ab7; color:white'>
-                    @Html.DisplayNameFor(model => model.tipo)
-                </th>
-                <th style='background-color: #337ab7; color:white'></th>
-            </tr>
-        </thead>
+    <main>
+        <h3 class="text-center">Registro de Workstation</h3>
+        <hr />
+        <p>
+            @Html.ActionLink("Nuevo", "CreatePuntoVenta", null, new { @class = "btn btn-primary" })
+        </p>
+        <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
+            <thead class="text-center">
+                <tr style="font-size:12px">
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.tienda)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.caja)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.ip_workstation)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.hostname)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.tipo)
+                    </th>
+                    <th style='background-color: #337ab7; color:white'></th>
+                </tr>
+            </thead>
 
-        @foreach (var item in Model)
-        {
-            <tr class="text-center" style="font-size:12px;">
-                <td style="background-color: #dbd1d0; ">
-                    @Html.DisplayFor(modelItem => item.tienda)
-                </td>
-                <td style="background-color: #dbd1d0; ">
-                    @Html.DisplayFor(modelItem => item.caja)
-                </td>
-                <td style="background-color: #dbd1d0; ">
-                    @Html.DisplayFor(modelItem => item.ip_workstation)
-                </td>
-                <td style="background-color: #dbd1d0; ">
-                    @Html.DisplayFor(modelItem => item.hostname)
-                </td>
-                <td style="background-color: #dbd1d0; ">
-                    @Html.DisplayFor(modelItem => item.tipo)
-                </td>
-                <td style="background-color: #dbd1d0; font-size:12px;">
-                    @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.tienda }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
-                </td>
-            </tr>
-        }
+            @foreach (var item in Model)
+            {
+                <tr class="text-center" style="font-size:12px;">
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.tienda)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.caja)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.ip_workstation)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.hostname)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.tipo)
+                    </td>
+                    <td style="background-color: #dbd1d0; font-size:12px;">
+                        @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.tienda }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
 
-    </table>
+        </table>
+        <hr style="height:5px;" />
+    </main>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>

@@ -270,6 +270,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\CSS\EstiloMenu.css" />
+    <Content Include="Content\CSS\Iconos.css" />
     <Content Include="Content\CSS\Loaders.css" />
     <Content Include="Content\CSS\login.css" />
     <Content Include="Content\CSS\login2.css" />
