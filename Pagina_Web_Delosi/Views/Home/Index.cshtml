@@ -6,24 +6,42 @@
 }
 <html>
 <head>
-    <link href="~/Content/CSS/StylePerfil.css" rel="stylesheet" />
-    <link href="~/Content/CSS/Loaders.css" rel="stylesheet" />
+
     <link href="~/Content/CSS/Iconos.css" rel="stylesheet" />
 
 </head>
 <body>
     <main>
         <div class="contenedor">
-            <div class="items">
-                <div id="item">Servidor</div>
+            <div class="columna">
+                <button class="boton">
+                    <img src="~/Img/Iconos/servidor.png" style="left:150px; width:150px " />
+                    <ul>
+                        @Html.ActionLink("Servidores", "Index_buscar_servidor_total", "Servidores_Tienda")
+                    </ul>
+                </button>
+                <div class="itemseparator"></div>
+                <button class="boton">
+                    <ul>
+                        KDS
+                    </ul>
+                </button>
             </div>
-            <div class="items">
-                <div id="item">Workstation</div>
+            <div class="columna">
+                <button class="boton">
+                    <img src="~/Img/Iconos/punto-de-venta.png" style="left: 150px; width:150px " />
+                    <ul>
+                        @Html.ActionLink("Workstation", "IndexBuscarPuntoVenta", "WorkStation")
+                    </ul>
+                </button>
+                <div class="itemseparator"></div>
+                <button class="boton">
+                    <img src="~/Img/Iconos/PC_Gerencial.png" style="left: 150px; width:150px " />
+                    <ul>
+                        PCGerenciales
+                    </ul>
+                </button>
             </div>
-            <div class="items">
-                <div id="item"></div>
-            </div>
-            <div class="items">Item 4</div>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
