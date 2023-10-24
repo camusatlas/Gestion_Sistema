@@ -13,7 +13,7 @@
 				"sNext": "Siguiente",
 				"sPrevious": "Anterior"
 			},
-			"sProcessing": "Procesando...",
+			lengthMenu: [[6], [6]]
 		},
 		//para usar los botones   
 		responsive: "true",

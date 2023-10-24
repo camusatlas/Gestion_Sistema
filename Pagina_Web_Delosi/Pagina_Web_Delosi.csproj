@@ -282,13 +282,16 @@
     <Content Include="Content\JS\buttons_bootstrap.js" />
     <Content Include="Content\JS\buttons_bootstrap4.js" />
     <Content Include="Content\JS\buttons_bootstrap4_min.js" />
+    <Content Include="Content\JS\datatables.min.js" />
     <Content Include="Content\JS\datatables_min.js" />
     <Content Include="Content\JS\ExportarDoc.js" />
     <Content Include="Content\JS\JavaScriptPerfile.js" />
     <Content Include="Content\JS\JQuery.js" />
     <Content Include="Content\JS\Loaders.js" />
+    <Content Include="Content\JS\main.js" />
     <Content Include="Content\JS\Menu_desplegable.js" />
     <Content Include="Content\JS\Paginacion.js" />
+    <Content Include="Content\JS\popper.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -298,6 +301,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\JS\jquery-3.3.1.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

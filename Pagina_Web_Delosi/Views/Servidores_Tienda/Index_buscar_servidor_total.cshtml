@@ -14,7 +14,7 @@
     <title>Busqueda de Servidores</title>
     <link href="~/Content/CSS/BarraDiv.css" rel="stylesheet" />
     <!---->
-
+    <link href="~/Content/CSS/Boton_Reporte.css" rel="stylesheet" />
     <!--font awesome con CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
@@ -54,63 +54,67 @@
         <p>
             @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary" })
         </p>
-        <div class="row">
-            <div class="table-responsive">
-                <tabla class="example"></tabla>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead class="text-center">
+                                <tr style="font-size:12px">
+                                    <th style='background-color: #337ab7; color:white'>
+                                        @Html.DisplayNameFor(model => model.cod_marca)
+                                    </th>
+                                    <th style='background-color: #337ab7; color:white'>
+                                        @Html.DisplayNameFor(model => model.cod_tienda)
+                                    </th>
+                                    <th style='background-color: #337ab7; color:white'>
+                                        @Html.DisplayNameFor(model => model.tienda)
+                                    </th>
+                                    <th style='background-color: #337ab7; color:white'>
+                                        @Html.DisplayNameFor(model => model.ip_servidor)
+                                    </th>
+                                    <th style='background-color: #337ab7; color:white'>
+                                        @Html.DisplayNameFor(model => model.nom_servidor)
+                                    </th>
+                                    <th style='background-color: #337ab7; color:white'></th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr class="text-center" style="font-size:12px;">
+                                    <td style="background-color: #dbd1d0; ">
+                                        @Html.DisplayFor(modelItem => item.cod_marca)
+                                    </td>
+                                    <td style="background-color: #dbd1d0;">
+                                        @Html.DisplayFor(modelItem => item.cod_tienda)
+                                    </td>
+                                    <td style="background-color: #dbd1d0;">
+                                        @Html.DisplayFor(modelItem => item.tienda)
+                                    </td>
+                                    <td style="background-color: #dbd1d0;">
+                                        @Html.DisplayFor(modelItem => item.ip_servidor)
+                                    </td>
+                                    <td style="background-color: #dbd1d0;">
+                                        @Html.DisplayFor(modelItem => item.nom_servidor)
+                                    </td>
+                                    <td style="background-color: #dbd1d0; font-size:12px;">
+                                        @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <br />
+
             </div>
-            <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
-                <thead class="text-center">
-                    <tr style="font-size:12px">
-                        <th style='background-color: #337ab7; color:white'>
-                            @Html.DisplayNameFor(model => model.cod_marca)
-                        </th>
-                        <th style='background-color: #337ab7; color:white'>
-                            @Html.DisplayNameFor(model => model.cod_tienda)
-                        </th>
-                        <th style='background-color: #337ab7; color:white'>
-                            @Html.DisplayNameFor(model => model.tienda)
-                        </th>
-                        <th style='background-color: #337ab7; color:white'>
-                            @Html.DisplayNameFor(model => model.ip_servidor)
-                        </th>
-                        <th style='background-color: #337ab7; color:white'>
-                            @Html.DisplayNameFor(model => model.nom_servidor)
-                        </th>
-                        <th style='background-color: #337ab7; color:white'></th>
-                    </tr>
-                </thead>
-
-                @foreach (var item in Model)
-                {
-                    <tr class="text-center" style="font-size:12px;">
-                        <td style="background-color: #dbd1d0; ">
-                            @Html.DisplayFor(modelItem => item.cod_marca)
-                        </td>
-                        <td style="background-color: #dbd1d0;">
-                            @Html.DisplayFor(modelItem => item.cod_tienda)
-                        </td>
-                        <td style="background-color: #dbd1d0;">
-                            @Html.DisplayFor(modelItem => item.tienda)
-                        </td>
-                        <td style="background-color: #dbd1d0;">
-                            @Html.DisplayFor(modelItem => item.ip_servidor)
-                        </td>
-                        <td style="background-color: #dbd1d0;">
-                            @Html.DisplayFor(modelItem => item.nom_servidor)
-                        </td>
-                        <td style="background-color: #dbd1d0; font-size:12px;">
-                            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-primary" })
-                            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
-                        </td>
-                    </tr>
-                }
-            </table>
-            <br />
-            <br />
-
+            <hr style="height:5px;" />
         </div>
-        <hr style="height:5px;" />
     </main>
+
 
 
 
@@ -123,12 +127,13 @@
     <!-- BOOTSTRAP -->
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>
-    <script src="~/Content/JS/Paginacion.js"></script>
+
     <script src="~/Content/JS/ExportarDoc.js"></script>
-    <!-- para usar botones en datatables JS -->
-
-    <!---->
-    <script src="~/Content/JS/datatables_min.js"></script>
-
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="~/Content/JS/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/JS/popper.min.js"></script>
+    <script src="~/Content/JS/bottons_bootstrap_min.js"></script>
+    <!-- datatables JS -->
+    <script src="~/Content/JS/datatables.min.js"></script>
 </body>
 </html>
