@@ -22,6 +22,6 @@
                 sortDescending: ": active para ordenar la columna en orden descendente"
             }
         },
-        lengthMenu: [[6, 10], [6, 10]],
+        lengthMenu: [[6], [6]]
     });
 });

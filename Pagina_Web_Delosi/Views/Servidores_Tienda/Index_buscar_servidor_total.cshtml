@@ -12,16 +12,52 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Busqueda de Servidores</title>
+    <link href="~/Content/CSS/BarraDiv.css" rel="stylesheet" />
+    <!---->
 
+    <!--font awesome con CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
     <main>
         <h2 class="text-center">Registro de Servidores</h2>
         <hr />
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <img src="../Img/icono_menu_2.jpg" style="width: 40px; height: 40px;" />
+                    <ul class="navbar-nav ms-4">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " role="button" data-bs-toggle="dropdown">
+                                @Html.ActionLink("Busque de Servidores", "Index_buscar_servidor_total", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " role="button" data-bs-toggle="dropdown">
+                                @Html.ActionLink("Datos de tienda", "Index_buscar_servidor_dato_comerciales", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " role="button" data-bs-toggle="dropdown">
+                                @Html.ActionLink("Datos de La Tienda", "Index_buscar_tienda_total", "Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br />
         <p>
             @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary" })
         </p>
         <div class="row">
+            <div class="table-responsive">
+                <tabla class="example"></tabla>
+            </div>
             <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
                 <thead class="text-center">
                     <tr style="font-size:12px">
@@ -77,17 +113,7 @@
     </main>
 
 
-    <script>
-        bus_sec * function () {
-            $.post(
-                '/Seccion/bus_sec', {
-                tipo_bus: $('#cb_sec').val(),//--Este es el id del combobox
-                datos_bus_sec: $('#dato_bus_sec').val() //-- este es el ide de la caja de texto
-            }, function (res) {
-                $('#tabla_seccion_bus').html(res)//-- id de la tabla
-            });
-        };
-    </script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>
@@ -98,5 +124,11 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>
     <script src="~/Content/JS/Paginacion.js"></script>
+    <script src="~/Content/JS/ExportarDoc.js"></script>
+    <!-- para usar botones en datatables JS -->
+
+    <!---->
+    <script src="~/Content/JS/datatables_min.js"></script>
+
 </body>
 </html>

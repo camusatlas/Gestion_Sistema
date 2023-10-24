@@ -269,6 +269,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\CSS\BarraDiv.css" />
+    <Content Include="Content\CSS\Boton_Reporte.css" />
     <Content Include="Content\CSS\EstiloMenu.css" />
     <Content Include="Content\CSS\Iconos.css" />
     <Content Include="Content\CSS\Loaders.css" />
@@ -276,6 +278,12 @@
     <Content Include="Content\CSS\login2.css" />
     <Content Include="Content\CSS\Menu_desplegable.css" />
     <Content Include="Content\CSS\StylePerfil.css" />
+    <Content Include="Content\JS\bottons_bootstrap_min.js" />
+    <Content Include="Content\JS\buttons_bootstrap.js" />
+    <Content Include="Content\JS\buttons_bootstrap4.js" />
+    <Content Include="Content\JS\buttons_bootstrap4_min.js" />
+    <Content Include="Content\JS\datatables_min.js" />
+    <Content Include="Content\JS\ExportarDoc.js" />
     <Content Include="Content\JS\JavaScriptPerfile.js" />
     <Content Include="Content\JS\JQuery.js" />
     <Content Include="Content\JS\Loaders.js" />

@@ -17,6 +17,35 @@
     <main>
         <h3 class="text-center">Datos de la Tienda</h3>
         <hr />
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <img src="../Img/icono_menu_2.jpg" style="width: 40px; height: 40px;" />
+                    <ul class="navbar-nav ms-4">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " role="button" data-bs-toggle="dropdown">
+                                @Html.ActionLink("Busque de Servidores", "Index_buscar_servidor_total", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " role="button" data-bs-toggle="dropdown">
+                                @Html.ActionLink("Datos de tienda", "Index_buscar_servidor_dato_comerciales", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " role="button" data-bs-toggle="dropdown">
+                                @Html.ActionLink("Datos de La Tienda", "Index_buscar_tienda_total", "Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br />
         <p>
             @Html.ActionLink("Nuevo", "CreateServidor", null, new { @class = "btn btn-primary" })
         </p>

@@ -73,7 +73,7 @@ body {
     height: 100%;
     overflow: hidden;
     padding: 20px 15px;
-    background-color: var(--color-barra-lateral);
+    background-color: #22313A;
     transition: width 0.5s ease,background-color 0.3s ease,left 0.5s ease;
     z-index: 50;
 }
@@ -128,13 +128,14 @@ body {
     justify-content: center;
     border: none;
     border-radius: 10px;
-    background-color: var(--color-boton);
-    color: var(--color-boton-texto);
+    background-color: var(--color-scroll-hover);
+    color: white;
 }
 
     .barra-lateral .boton ion-icon {
         min-width: 50px;
         font-size: 25px;
+        background-color:white;
     }
 
 
@@ -143,6 +144,7 @@ body {
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+
 }
 
     .barra-lateral .navegacion::-webkit-scrollbar {
@@ -150,7 +152,7 @@ body {
     }
 
     .barra-lateral .navegacion::-webkit-scrollbar-thumb {
-        background-color: var(--color-scroll);
+        background-color: var(--color-scroll-hover);
         border-radius: 5px;
     }
 
@@ -251,6 +253,7 @@ body {
 
 /*---------------> Usuario*/
 .barra-lateral .usuario {
+
     width: 100%;
     display: flex;
 }

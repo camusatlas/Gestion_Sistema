@@ -29,6 +29,10 @@
     transition: background-color 0.3s;
 }
 
+button{
+    font-size:300px;
+    padding: 1000px 1000px;
+}
     .boton:hover {
         background-color: #2980b9;
         color: #fff;
