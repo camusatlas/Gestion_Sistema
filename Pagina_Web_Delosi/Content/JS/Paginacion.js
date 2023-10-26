@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('#example').DataTable({
+    $('#datatable_users').DataTable({
         language: {
             processing: "Tratamiento en curso...",
             search: "Buscar&nbsp;:",
