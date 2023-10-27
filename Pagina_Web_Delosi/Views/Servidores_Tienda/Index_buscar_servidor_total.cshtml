@@ -11,6 +11,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <!--  -->
     <!-- Boton de Reportes -->
     <link rel="stylesheet"
           href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
@@ -34,6 +35,7 @@
           referrerpolicy="no-referrer" />
     <!-- Custom CSS -->
     <link href="~/Content/CSS/Style_table.css" rel="stylesheet" />
+    <!--  -->
 
     <title>Busqueda de Servidores</title>
 
@@ -74,48 +76,61 @@
         <p>
             @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary" })
         </p>
-        <div class="container my-4">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto table-striped">
-                        <caption>
-                            DataTable.js Demo
-                        </caption>
-                        <thead>
-                            <tr>
-                                <th class="centered">@Html.DisplayNameFor(model => model.cod_marca)</th>
-                                <th class="centered">@Html.DisplayNameFor(model => model.cod_tienda)</th>
-                                <th class="centered">@Html.DisplayNameFor(model => model.tienda)</th>
-                                <th class="centered">@Html.DisplayNameFor(model => model.ip_servidor)</th>
-                                <th class="centered">@Html.DisplayNameFor(model => model.nom_servidor)</th>
-                                <th class="centered">Status</th>
-                                <th class="centered">Options</th>
-                            </tr>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.cod_marca)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.cod_tienda)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.tienda)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.ip_servidor)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.nom_servidor)</td>
-                                    <td><i class="fa-solid fa-square-check" style="color: green;"></i></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
-                                        <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i></button>
-                                    </td>
-                                </tr>
-                            }
-                        </thead>
-                        <tbody id="tableBody_users"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
+            <thead class="text-center">
+                <tr style="font-size:12px">
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.cod_marca)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.cod_tienda)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.tienda)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.ip_servidor)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.nom_servidor)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>Status</th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>Opciones</th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr class="text-center" style="font-size:12px;">
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.cod_marca)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.cod_tienda)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.tienda)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.ip_servidor)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.nom_servidor)
+                    </td>
+                    <td style="background-color: #dbd1d0; "><i class="fa-solid fa-square-check" style="color: green;"></i></td>
+                    <td style="background-color: #dbd1d0; font-size:12px;">
+                        @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.tienda }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <hr style="height:5px;" />
 
 
     </main>
-    <!--  -->
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>
@@ -125,6 +140,7 @@
     <!-- BOOTSTRAP -->
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>
+    <script src="~/Content/JS/Paginacion.js"></script>
     <!--  -->
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -135,8 +151,6 @@
     <!-- DataTable -->
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-    <!-- Custom JS -->
-    <script src="~/Content/JS/Paginacion.js"></script>
     <!-- Columnas Visibility -->
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
@@ -151,6 +165,7 @@
     <!-- Reporte Inpreso -->
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
+    <!--  -->
 
 </body>
 </html>

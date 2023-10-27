@@ -1,56 +1,47 @@
 ﻿$(document).ready(function () {
-    $('#tablax').DataTable({
-        language: {
-            lengthMenu: "",
-            zeroRecords: "Ningún usuario encontrado",
-            info: "Mostrando de _START_ a _END_ de un total de _TOTAL_ registros",
-            infoEmpty: "Ningún usuario encontrado",
-            infoFiltered: "(filtrados desde _MAX_ registros totales)",
-            search: "Buscar:",
-            loadingRecords: "Cargando...",
-            paginate: {
-                first: "Primero",
-                last: "Último",
-                next: "Siguiente",
-                previous: "Anterior"
-            }
-        },
-        ordering: false,
-        lengthMenu: false,
-        dom: 'Bfrtip',
-        buttons: {
-            buttons: [
-                {
-                    extend: 'copy',
-                    text: '<i class="bi bi-clipboard-fill"></i>',
-                    titleAttr: 'Copiar',
-                    className: 'btn btn-secondary'
-                },
-                {
-                    extend: 'excel',
-                    text: '<i class="bi bi-file-earmark-spreadsheet"></i>',
-                    titleAttr: 'Exportar a Excel',
-                    className: 'btn btn-success'
-                },
-                {
-                    extend: 'pdf',
-                    text: '<i class="bi bi-file-earmark-pdf"></i>',
-                    titleAttr: 'Exportar a PDF',
-                    className: 'btn btn-danger'
-                },
-                {
-                    extend: 'print',
-                    text: '<i class="bi bi-printer"></i>',
-                    titleAttr: 'Imprimir',
-                    className: 'btn btn-info'
-                },
-                {
-                    extend: 'colvis',
-                    text: 'Filtrar Columnas'
-                }
-            ]
-        }
-        
+	$('#tablax').DataTable({
+		language: {
+			lengthMenu: "Mostrar _MENU_ registros",
+			zeroRecords: "No se encontraron resultados",
+			info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+			infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+			infoFiltered: "(filtrado de un total de _MAX_ registros)",
+			sSearch: "Buscar:",
+			oPaginate: {
+				sFirst: "Primero",
+				sLast: "Último",
+				sNext: "Siguiente",
+				sPrevious: "Anterior"
+			},
+			sProcessing: "Procesando...",
 
-    });
+		},
+		
+		//para usar los botones   
+		responsive: "true",
+		dom: 'Bfrtilp',
+
+		buttons: [
+			{
+				extend: 'excelHtml5',
+				text: '<i class="fas fa-file-excel"></i> ',
+				titleAttr: 'Exportar a Excel',
+				className: 'btn btn-success'
+			},
+			{
+				extend: 'pdfHtml5',
+				text: '<i class="fas fa-file-pdf"></i> ',
+				titleAttr: 'Exportar a PDF',
+				className: 'btn btn-danger'
+			},
+			{
+				extend: 'print',
+				text: '<i class="fa fa-print"></i> ',
+				titleAttr: 'Imprimir',
+				className: 'btn btn-info'
+			},
+		],
+		pageLength: 3,
+
+	});
 });

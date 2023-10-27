@@ -9,6 +9,32 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <!--  -->
+    <!-- Boton de Reportes -->
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <!-- DataTable -->
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link href="~/Content/CSS/Style_table.css" rel="stylesheet" />
+    <!--  -->
+
     <title>Busquedad de WorkStation</title>
 </head>
 <body>
@@ -36,7 +62,8 @@
                     <th style='background-color: #337ab7; color:white'>
                         @Html.DisplayNameFor(model => model.tipo)
                     </th>
-                    <th style='background-color: #337ab7; color:white'></th>
+                    <th style='background-color: #337ab7; color:white'>Status</th>
+                    <th style='background-color: #337ab7; color:white'>Opciones</th>
                 </tr>
             </thead>
 
@@ -58,6 +85,7 @@
                     <td style="background-color: #dbd1d0; ">
                         @Html.DisplayFor(modelItem => item.tipo)
                     </td>
+                    <td style="background-color: #dbd1d0; " ><i class="fa-solid fa-square-check" style="color: green;"></i></td>
                     <td style="background-color: #dbd1d0; font-size:12px;">
                         @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.tienda }, new { @class = "btn btn-primary" })
                         @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
@@ -78,5 +106,30 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>
     <script src="~/Content/JS/Paginacion.js"></script>
+    <!--  -->
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- DataTable -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <!-- Columnas Visibility -->
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
+    <!-- Reporte zip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- Reporte de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <!-- Reporte Excel -->
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <!-- Reporte Inpreso -->
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
+    <!--  -->
 </body>
 </html>
