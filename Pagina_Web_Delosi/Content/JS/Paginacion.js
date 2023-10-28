@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 	$('#tablax').DataTable({
 		language: {
-			lengthMenu: "Mostrar _MENU_ registros",
+			lengthMenu: "",
 			zeroRecords: "No se encontraron resultados",
 			info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
 			infoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
@@ -16,7 +16,16 @@
 			sProcessing: "Procesando...",
 
 		},
-		
+		scrollX: "2000px",
+		scrollY: "220px",
+		columnDefs: [
+			{
+
+			}
+		],
+		info: false,
+		ordering: false,
+		lengthMenu: false,
 		//para usar los botones   
 		responsive: "true",
 		dom: 'Bfrtilp',
@@ -40,6 +49,10 @@
 				titleAttr: 'Imprimir',
 				className: 'btn btn-info'
 			},
+			{
+				extend: 'colvis',
+				text: 'Filtrar Columnas'
+			}
 		],
 		pageLength: 3,
 
