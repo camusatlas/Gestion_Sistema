@@ -16,6 +16,15 @@
 			sProcessing: "Procesando...",
 
 		},
+		scrollX: "2000px",
+		scrollY: "220px",
+		columnDefs: [
+			{
+
+			}
+		],
+		info: false,
+		ordering: false,
 		lengthMenu: false,
 		//para usar los botones   
 		responsive: "true",
@@ -40,6 +49,10 @@
 				titleAttr: 'Imprimir',
 				className: 'btn btn-info'
 			},
+			{
+				extend: 'colvis',
+				text: 'Filtrar Columnas'
+			}
 		],
 		pageLength: 3,
 
