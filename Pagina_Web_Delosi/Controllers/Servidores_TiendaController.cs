@@ -202,6 +202,15 @@ namespace Pagina_Web_Delosi.Controllers
         }
         string AgregarServidor(Servidores_Total reg)
         {
+            //Condicion para poder agregar los datos
+            if (string.IsNullOrEmpty(reg.cod_marca) || string.IsNullOrEmpty(reg.cod_tienda) ||
+            string.IsNullOrEmpty(reg.tienda) || string.IsNullOrEmpty(reg.ip_servidor) ||
+            string.IsNullOrEmpty(reg.nom_servidor) || reg.idtecnico == null || reg.fecha_asignado == null)
+            {
+                return "Por favor, ingrese todos los datos del servidor.";
+            }
+
+
             string mensaje = string.Empty;
             MySqlConnection cn = new MySqlConnection(ConfigurationManager.ConnectionStrings["ServidorDelosi"].ConnectionString);
             try
@@ -218,9 +227,9 @@ namespace Pagina_Web_Delosi.Controllers
                 cmd.Parameters.AddWithValue("serie", reg.serie);
                 cmd.Parameters.AddWithValue("sistema_operativo", reg.sistema_operativo);
                 cmd.Parameters.AddWithValue("version_micros", reg.version_micros);
-                cmd.Parameters.AddWithValue("memoeria_ram", reg.memoria_ram);
+                cmd.Parameters.AddWithValue("memoria_ram", reg.memoria_ram);
                 cmd.Parameters.AddWithValue("tamano_bd", reg.tamano_bd);
-                cmd.Parameters.AddWithValue("sttus", reg.status);
+                cmd.Parameters.AddWithValue("status", reg.status);
                 cmd.Parameters.AddWithValue("ultimo_reinicio", reg.ultimo_reinicio);
                 cmd.Parameters.AddWithValue("version_facturador", reg.version_facturador);
                 cmd.Parameters.AddWithValue("ultima_venta", reg.ultima_venta);
@@ -249,9 +258,29 @@ namespace Pagina_Web_Delosi.Controllers
         [HttpPost]
         public ActionResult Create(Servidores_Total reg)
         {
-            ViewBag.mensaje = AgregarServidor(reg);
-            ViewBag.paises = new SelectList(servidores(), "nom_servidor", reg.nom_servidor);
-            return View(new Servidores_Total());
+            if (string.IsNullOrEmpty(reg.cod_marca) || string.IsNullOrEmpty(reg.cod_tienda) ||
+                string.IsNullOrEmpty(reg.tienda) || string.IsNullOrEmpty(reg.ip_servidor) ||
+                string.IsNullOrEmpty(reg.nom_servidor) || reg.idtecnico == null || reg.fecha_asignado == null)
+            {
+                ViewBag.paises = new SelectList(servidores(), "nom_servidor");
+                ViewBag.ErrorMessage = "Por favor, ingrese todos los datos del servidor.";
+                return View(reg);
+            }
+
+            string mensaje = AgregarServidor(reg);
+
+            if (mensaje.StartsWith("Se creo"))
+            {
+                ViewBag.paises = new SelectList(servidores(), "nom_servidor", reg.nom_servidor);
+                ViewBag.mensaje = mensaje;
+                return View(new Servidores_Total());
+            }
+            else
+            {
+                ViewBag.paises = new SelectList(servidores(), "nom_servidor");
+                ViewBag.mensaje = mensaje;
+                return View(new Servidores_Total());
+            }
         }
         public ActionResult Edit(string id)
         {

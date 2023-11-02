@@ -279,6 +279,7 @@
     <Content Include="Content\CSS\Menu_desplegable.css" />
     <Content Include="Content\CSS\StylePerfil.css" />
     <Content Include="Content\CSS\Style_table.css" />
+    <Content Include="Content\JS\Alert.js" />
     <Content Include="Content\JS\bottons_bootstrap_min.js" />
     <Content Include="Content\JS\buttons_bootstrap.js" />
     <Content Include="Content\JS\buttons_bootstrap4.js" />
