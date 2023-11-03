@@ -67,7 +67,7 @@ namespace Pagina_Web_Delosi.Controllers
                         return result != null;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                     // Puedes manejar el error de alguna manera apropiada, como registrar o mostrar un mensaje
                     return false;

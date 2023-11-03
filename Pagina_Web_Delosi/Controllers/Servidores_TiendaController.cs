@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
@@ -123,15 +124,15 @@ namespace Pagina_Web_Delosi.Controllers
             List<Us_Tecnico> lista = new List<Us_Tecnico>();
             MySqlConnection cn = new MySqlConnection(ConfigurationManager.ConnectionStrings["ServidorDelosi"].ConnectionString);
             cn.Open();
-            MySqlCommand cmd = new MySqlCommand("tb_bhd_gen_servidor_List_Total", cn);
+            MySqlCommand cmd = new MySqlCommand("List_datos_tecnico", cn);
             MySqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 lista.Add(new Us_Tecnico
                 {
                     idtecnico = !dr.IsDBNull(0) ? dr.GetString(0) : null,
-                    nombre_tec = dr.GetString(1),
-                    IDroles = dr.GetString(2)
+                    nombre_tec = dr.GetString(1)
+
                 });
             }
             dr.Close();
@@ -252,7 +253,7 @@ namespace Pagina_Web_Delosi.Controllers
         }
         public ActionResult Create()
         {
-            ViewBag.paises = new SelectList(servidores(), "nom_servidor");
+            ViewBag.servidor = new SelectList(servidores(), "nom_servidor");
             return View(new Servidores_Total());
         }
         [HttpPost]
@@ -282,28 +283,91 @@ namespace Pagina_Web_Delosi.Controllers
                 return View(new Servidores_Total());
             }
         }
+
+
+
+
+
+
+
         public ActionResult Edit(string id)
         {
             if (string.IsNullOrEmpty(id)) { id = string.Empty; }
-            Servidores_Total reg = servidores().FirstOrDefault(x => x.nom_servidor == id);
-            ViewBag.tecnicos = new SelectList(tecnicos(), "nom_servidor", reg.nom_servidor);
-            return View(reg);
+            Servidores_Total reg = servidores().FirstOrDefault(x => x.tienda == id);
+
+            if (reg != null)
+            {
+                ViewBag.servidor = new SelectList(servidores(), "tienda", reg.tienda);
+                return View(reg);
+            }
+            else
+            {
+                // Manejar el caso cuando reg es null, por ejemplo, redirigir a una página de error
+                return RedirectToAction("Error");
+            }
         }
-        [HttpPost]public ActionResult Edit(Servidores_Total reg)
+
+        [HttpPost]
+        public ActionResult Edit(Servidores_Total reg)
         {
             ViewBag.mensaje = ActualizarServidor(reg);
-            ViewBag.tecnicos = new SelectList(tecnicos(), "nom_servidor", reg.nom_servidor);
+            ViewBag.servidor = new SelectList(servidores(), "tienda", reg.tienda);
             return View(new Servidores_Total());
         }
-        public ActionResult Detail(string id)
+
+
+
+        /* Metodo de actualizar */
+        public ActionResult Editar(string id)
         {
             if (string.IsNullOrEmpty(id)) { id = string.Empty; }
-            Servidores_Total reg = servidores().FirstOrDefault(x => x.nom_servidor == id);
+            Servidores_Total reg = servidores().FirstOrDefault(x => x.tienda == id);
+            if (reg == null)
+            {
+                return RedirectToAction("Error");
+            }
+            ViewBag.tienda = new SelectList(tecnicos(), "tienda", reg.tienda);
             return View(reg);
         }
 
+        [HttpPost]
+        public ActionResult Editar(Servidores_Total reg)
+        {
+            ViewBag.mensaje = ActualizarServidor(reg);
+            ViewBag.tecnicos = new SelectList(tecnicos(), "idtecnicos", "nombretecnico", reg.idtecnico);
+            return View(new Servidores_Total());
+        }
 
 
+        /* Eliminar Servidor segun su Nombre */
+
+        [HttpPost]
+        public ActionResult Eliminar(int id)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["ServidorDelosi"].ConnectionString))
+                {
+                    conn.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand("Eliminar_Servidor", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@nom_servidor", id);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    return RedirectToAction("Index", "Home"); // Redirige a la página principal después de eliminar la fila
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir durante la eliminación
+                ViewBag.Error = ex.Message;
+                return View("Error"); // Muestra una vista de error
+            }
+        }
 
         public ActionResult Index()
         {

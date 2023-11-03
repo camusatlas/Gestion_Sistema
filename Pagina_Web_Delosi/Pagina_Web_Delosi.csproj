@@ -286,6 +286,7 @@
     <Content Include="Content\JS\buttons_bootstrap4_min.js" />
     <Content Include="Content\JS\datatables.min.js" />
     <Content Include="Content\JS\datatables_min.js" />
+    <Content Include="Content\JS\Ejecucion_Boton.js" />
     <Content Include="Content\JS\ExportarDoc.js" />
     <Content Include="Content\JS\JavaScriptPerfile.js" />
     <Content Include="Content\JS\JQuery.js" />
@@ -337,6 +338,8 @@
     <Content Include="Views\Servidores_Tienda\Index_buscar_servidor_list_caracteristicas.cshtml" />
     <Content Include="Views\Tienda\Index_buscar_tienda_total.cshtml" />
     <Content Include="Views\Servidores_Tienda\Create.cshtml" />
+    <Content Include="Views\Servidores_Tienda\Edit.cshtml" />
+    <Content Include="Views\Servidores_Tienda\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

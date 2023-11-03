@@ -119,8 +119,8 @@
                     </td>
                     <td style="background-color: #dbd1d0; "><i class="fa-solid fa-square-check" style="color: green;"></i></td>
                     <td style="background-color: #dbd1d0; font-size:12px;">
-                        @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.tienda }, new { @class = "btn btn-primary" })
-                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Editar", "Edit", new { id = item.tienda }, new { @class = "btn btn-primary" })
+                        <button class="btn btn-danger eliminar-servidor-btn" data-id="@item.tienda">Eliminar</button>
                     </td>
                 </tr>
             }
@@ -130,7 +130,7 @@
 
 
     </main>
-
+    <script src="~/Content/JS/Ejecucion_Boton.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>
