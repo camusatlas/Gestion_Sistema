@@ -1,4 +1,9 @@
 ﻿//Esperar 1.5 segundos
 setTimeout(function () {
-    $(".alert").fadeOut("slow");
+    $(".alerta").fadeOut("slow");
 }, 1500);
+
+function mostrar() {
+    var div = document.getElementById('alerta');
+    div.style.display = 'block';
+}

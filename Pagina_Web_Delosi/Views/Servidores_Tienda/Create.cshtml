@@ -82,12 +82,11 @@
             </div>
         }
         <div class="itemseparator"></div>
-        @if (@ViewBag.ErrorMessage = != null)
-        { 
-        <div class="alert alert-danger text-center" role="alert">
+        
+        <div class="alert alert-danger text-center" role="alert" style="display:none">
             @ViewBag.ErrorMessage
         </div>
-        }
+        
         <div>
             @Html.ActionLink("REGRESAR", "Index_buscar_servidor_total", "Servidores_Tienda", new { @class = "btn btn-danger" })
         </div>
