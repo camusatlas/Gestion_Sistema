@@ -16,13 +16,6 @@
 			sProcessing: "Procesando...",
 
 		},
-		scrollX: "2000px",
-		scrollY: "220px",
-		columnDefs: [
-			{
-
-			}
-		],
 		info: false,
 		ordering: false,
 		lengthMenu: false,
