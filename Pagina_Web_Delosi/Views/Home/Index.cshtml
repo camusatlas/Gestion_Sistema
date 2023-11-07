@@ -38,11 +38,11 @@
                         @Html.ActionLink("Workstation", "IndexBuscarPuntoVenta", "WorkStation", new { area = "" }, new { @class = "nav-link dropdown-item" })
                     </ul>
                 </button>
-                <div class="itemseparator"></div>
+                <div class="itemseparator" BuscarKDS></div>
                 <button class="boton">
                     <img src="~/Img/Iconos/PC_Gerencial.png" style="left: 150px; width:150px " />
                     <ul>
-                        PCGerenciales
+                        @Html.ActionLink("PCGerenciales", "BuscarKDS", "KDS", new { area = "" }, new { @class = "nav-link dropdown-item" })
                     </ul>
                 </button>
             </div>
