@@ -235,6 +235,7 @@
     <Compile Include="Home\HomeController.cs" />
     <Compile Include="Home\LoginController.cs" />
     <Compile Include="Kds\OpcionesKDS.cs" />
+    <Compile Include="PCGerenciales.cs" />
     <Compile Include="Servidores\OpcionesServidor.cs" />
     <Compile Include="Servidores\Servidor.cs" />
     <Compile Include="Global.asax.cs">

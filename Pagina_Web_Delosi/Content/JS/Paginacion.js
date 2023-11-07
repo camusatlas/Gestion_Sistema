@@ -47,7 +47,7 @@
 				text: 'Filtrar Columnas'
 			}
 		],
-		pageLength: 3,
+		pageLength: 6,
 
 	});
 });
