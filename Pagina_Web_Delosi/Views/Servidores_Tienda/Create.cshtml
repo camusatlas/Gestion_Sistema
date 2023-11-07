@@ -5,9 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width" />
     <title>Servidor Nuevo</title>
 </head>
+
 <body>
     <main>
         @using (Html.BeginForm())
@@ -73,14 +75,21 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <div class="itemseparator"></div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="CREAR" class="btn btn-success" />
+=======
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+>>>>>>> 05be4bf796ef1145230d50da51fd090b7563e094
                     </div>
                 </div>
             </div>
         }
+<<<<<<< HEAD
         <div class="itemseparator"></div>
         
         <div class="alert alert-danger text-center"  >
@@ -97,5 +106,12 @@
     </main>
     @* Tienmpo de alesta *@
     <script src="~/Content/JS/Alert.js"></script>
+=======
+
+        <div>
+            @Html.ActionLink("Regresando", "Index_buscar_servidor_total", new { @class = "btn btn-danger" })
+        </div>
+    </main>
+>>>>>>> 05be4bf796ef1145230d50da51fd090b7563e094
 </body>
 </html>
