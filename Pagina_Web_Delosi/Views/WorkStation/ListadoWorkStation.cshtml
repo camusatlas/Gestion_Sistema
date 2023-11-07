@@ -1,14 +1,14 @@
-﻿@model IEnumerable<Pagina_Web_Delosi.Models.Servidores_Total>
+﻿@model IEnumerable<Pagina_Web_Delosi.WorkStation.WorKStation>
 
 @{
-    ViewBag.Title = "BuscarKDS";
+    ViewBag.Title = "ListadoWorkStation";
 }
 
 <!DOCTYPE html>
 
-
 <html>
 <head>
+
     <meta name="viewport" content="width=device-width" />
     <!--  -->
     <!-- Boton de Reportes -->
@@ -33,47 +33,16 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
     <!-- Custom CSS -->
-
+    <link href="~/Content/CSS/Style_table.css" rel="stylesheet" />
     <!--  -->
-
-    <title>Busqueda de Servidores</title>
+    <title>WorkStation</title>
 
 </head>
 <body>
     <main>
         <h2 class="text-center">Registro de Servidores</h2>
-        <hr />
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-            <div class="container-fluid">
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse">
-                    <img src="../Img/icono_menu_2.jpg" style="width: 40px; height: 40px;" />
-                    <ul class="navbar-nav ms-4">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " role="button" data-bs-toggle="dropdown">
-                                @Html.ActionLink("Busque de Servidores", "Index_buscar_servidor_total", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " role="button" data-bs-toggle="dropdown">
-                                @Html.ActionLink("Datos de tienda", "Index_buscar_servidor_dato_comerciales", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " role="button" data-bs-toggle="dropdown">
-                                @Html.ActionLink("Datos de La Tienda", "Index_buscar_tienda_total", "Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <br />
         <p>
-            @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
         </p>
         <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
             <thead class="text-center">
@@ -88,10 +57,43 @@
                         @Html.DisplayNameFor(model => model.tienda)
                     </th>
                     <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.ip_servidor)
+                        @Html.DisplayNameFor(model => model.caja)
                     </th>
                     <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.nom_servidor)
+                        @Html.DisplayNameFor(model => model.ip_workstation)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.hostname)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.tipo)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.modelo)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.status)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.ultima_venta)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.flg_estado)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.usuario_crea)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.fecha_crea)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.usuario_mod)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.fecha_mod)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.version_facturador)
                     </th>
                     <th class="text-center" style='background-color: #337ab7; color:white'>Status</th>
                     <th class="text-center" style='background-color: #337ab7; color:white'>Opciones</th>
@@ -111,25 +113,55 @@
                         @Html.DisplayFor(modelItem => item.tienda)
                     </td>
                     <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.ip_servidor)
+                        @Html.DisplayFor(modelItem => item.caja)
                     </td>
                     <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.nom_servidor)
+                        @Html.DisplayFor(modelItem => item.ip_workstation)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.hostname)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.tipo)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.modelo)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.ultima_venta)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.flg_estado)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.usuario_crea)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.fecha_crea)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.usuario_mod)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.fecha_mod)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.version_facturador)
                     </td>
                     <td style="background-color: #dbd1d0; "><i class="fa-solid fa-square-check" style="color: green;"></i></td>
                     <td style="background-color: #dbd1d0; font-size:12px;">
-                        @Html.ActionLink("Editar", "Editar", new { id = item.tienda }, new { @class = "btn btn-primary" })
-                        <button class="btn btn-danger eliminar-servidor-btn" data-id="@item.tienda">Eliminar</button>
+                        @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.tienda }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
 
         </table>
         <hr style="height:5px;" />
-
-
     </main>
-    <script src="~/Content/JS/Ejecucion_Boton.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>
@@ -165,6 +197,5 @@
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
     <!--  -->
-
 </body>
 </html>

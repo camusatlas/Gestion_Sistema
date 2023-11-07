@@ -8,7 +8,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using MySql.Data.MySqlClient;
-using Pagina_Web_Delosi.Models;
+using Pagina_Web_Delosi.Servidores;
 
 using System.DirectoryServices.AccountManagement;
 

@@ -20,14 +20,14 @@
                 <button class="boton">
                     <img src="~/Img/Iconos/servidor.png" style="left:150px; width:150px " />
                     <ul>
-                        @Html.ActionLink("Servidores", "Index_buscar_servidor_total", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })
+                        @Html.ActionLink("Servidores", "ListadoServidor", "Servidor", new { area = "" }, new { @class = "nav-link dropdown-item" })
                     </ul>
                 </button>
                 <div class="itemseparator"></div>
                 <button class="boton">
                     <img src="~/Img/Iconos/ordenador-personal.png" style="left: 150px; width:150px " />
                     <ul>
-                        KDS
+                        @Html.ActionLink("KDS", "BuscarKDS", "KDS", new { area = "" }, new { @class = "nav-link dropdown-item" })
                     </ul>
                 </button>
             </div>
@@ -35,7 +35,7 @@
                 <button class="boton">
                     <img src="~/Img/Iconos/punto-de-venta.png" style="left: 150px; width:150px " />
                     <ul>
-                        @Html.ActionLink("Workstation", "IndexBuscarPuntoVenta", "WorkStation", new { area = "" }, new { @class = "nav-link dropdown-item" })
+                        @Html.ActionLink("Workstation", "ListadoWorkStation", "WorkStation", new { area = "" }, new { @class = "nav-link dropdown-item" })
                     </ul>
                 </button>
                 <div class="itemseparator" BuscarKDS></div>

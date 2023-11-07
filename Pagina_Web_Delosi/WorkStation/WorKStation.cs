@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Pagina_Web_Delosi.Models_WorkStation
+namespace Pagina_Web_Delosi.WorkStation
 {
-    public class WorkStation_Total
+    public class WorKStation
     {
         [Display(Name = "Código de Marca")] public string cod_marca { get; set; }
         [Display(Name = "Código de Tienda")] public string cod_tienda { get; set; }
