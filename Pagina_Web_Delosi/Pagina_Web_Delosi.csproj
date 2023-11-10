@@ -295,7 +295,7 @@
     <Content Include="Content\JS\Loaders.js" />
     <Content Include="Content\JS\main.js" />
     <Content Include="Content\JS\Menu_desplegable.js" />
-    <Content Include="Content\JS\Paginacion.js" />
+    <Content Include="Content\JS\Paginacion_Servidor.js" />
     <Content Include="Content\JS\popper.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

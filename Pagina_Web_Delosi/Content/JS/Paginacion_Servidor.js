@@ -47,7 +47,89 @@
 				text: 'Filtrar Columnas'
 			}
 		],
-		pageLength: 6,
+		pageLength: 3,
 
+		columnDefs: [
+			{
+				target: 5,
+				visible: false,
+				searchable: false
+			},
+			{
+				targe: 6,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 7,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 8,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 9,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 10,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 11,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 12,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 13,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 14,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 15,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 16,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 17,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 18,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 19,
+				visible: false,
+				searchable: false,
+			},
+			{
+				targe: 20,
+				visible: false,
+				searchable: false,
+			}
+		]
 	});
 });
