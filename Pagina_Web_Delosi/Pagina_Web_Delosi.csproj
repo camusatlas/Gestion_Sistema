@@ -236,7 +236,9 @@
     <Compile Include="Home\LoginController.cs" />
     <Compile Include="Kds\OpcionesKDS.cs" />
     <Compile Include="PCGerenciales.cs" />
+    <Compile Include="PCGerencial\OpcionesPCGerencial.cs" />
     <Compile Include="PCGerencial\PCGerencial.cs" />
+    <Compile Include="PCGerencial\PCGerencialController.cs" />
     <Compile Include="Servidores\OpcionesServidor.cs" />
     <Compile Include="Servidores\Servidor.cs" />
     <Compile Include="Global.asax.cs">
@@ -295,6 +297,9 @@
     <Content Include="Content\JS\Loaders.js" />
     <Content Include="Content\JS\main.js" />
     <Content Include="Content\JS\Menu_desplegable.js" />
+    <Content Include="Content\JS\PaginacionWorkStation.js" />
+    <Content Include="Content\JS\Paginacion_KDS.js" />
+    <Content Include="Content\JS\Paginacion_PCGerencial.js" />
     <Content Include="Content\JS\Paginacion_Servidor.js" />
     <Content Include="Content\JS\popper.min.js" />
     <Content Include="favicon.ico" />
@@ -338,6 +343,7 @@
     <Content Include="Views\KDS\BuscarKDS.cshtml" />
     <Content Include="Views\Servidor\ListadoServidor.cshtml" />
     <Content Include="Views\WorkStation\ListadoWorkStation.cshtml" />
+    <Content Include="Views\PCGerencial\ListadoPCGerencial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

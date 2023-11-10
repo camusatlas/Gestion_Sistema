@@ -8,7 +8,8 @@ namespace Pagina_Web_Delosi.Kds
 {
     public class EquiposKds
     {
-        [Display(Name = "Empresa")] public string marca { get; set; }
+        [Display(Name = "Empresa")] public string empresa { get; set; }
+        [Display(Name = "Marca")] public string marca { get; set; }
         [Display(Name = "Tienda")] public string tienda { get; set; }
         [Display(Name = "Nombre de Tienda")] public string nombre_tienda { get; set; }
         [Display(Name = "Provincia")] public string provicia { get; set; }
@@ -17,6 +18,6 @@ namespace Pagina_Web_Delosi.Kds
         [Display(Name = "IP KDS")] public string ip_kds { get; set; }
         [Display(Name = "Hostname")] public string hostname { get; set; }
         [Display(Name = "Status")] public string status { get; set; }
-        [Display(Name = "Join Tienda")] public string  join_tienda { get; set; }
+
     }
 }

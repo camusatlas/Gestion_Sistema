@@ -51,9 +51,24 @@
 
 		columnDefs: [
 			{
-				target: 5,
+				target: 0,
 				visible: false,
 				searchable: false
+			},
+			{
+				target: 1,
+				visible: false,
+				searchable: false,
+			},
+			{
+				target: 4,
+				visible: false,
+				searchable: false,
+			},
+			{
+				target: 5,
+				visible: false,
+				searchable: false,
 			},
 			{
 				target: 6,
@@ -76,11 +91,6 @@
 				searchable: false,
 			},
 			{
-				target: 10,
-				visible: false,
-				searchable: false,
-			},
-			{
 				target: 11,
 				visible: false,
 				searchable: false,
@@ -91,47 +101,12 @@
 				searchable: false,
 			},
 			{
-				target: 13,
-				visible: false,
-				searchable: false,
-			},
-			{
 				target: 14,
 				visible: false,
 				searchable: false,
 			},
 			{
 				target: 15,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 16,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 17,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 18,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 19,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 20,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 21,
 				visible: false,
 				searchable: false,
 			}

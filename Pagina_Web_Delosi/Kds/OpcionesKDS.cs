@@ -26,6 +26,7 @@ namespace Pagina_Web_Delosi.Kds
                 {
                     EquiposKds equiposkds = new EquiposKds()
                     {
+                        empresa = !dr.IsDBNull(0) ? dr.GetString(0) : null,
                         marca = !dr.IsDBNull(1) ? dr.GetString(1) : null,
                         tienda = !dr.IsDBNull(2) ? dr.GetString(2) : null,
                         nombre_tienda = !dr.IsDBNull(3) ? dr.GetString(3) : null,
@@ -34,8 +35,8 @@ namespace Pagina_Web_Delosi.Kds
                         distrito = !dr.IsDBNull(6) ? dr.GetString(6) : null,
                         ip_kds = !dr.IsDBNull(7) ? dr.GetString(7) : null,
                         hostname = !dr.IsDBNull(8) ? dr.GetString(8) : null,
-                        status = !dr.IsDBNull(9) ? dr.GetString(9) : null,
-                        join_tienda = !dr.IsDBNull(10) ? dr.GetString(10) : null
+                        status = !dr.IsDBNull(9) ? dr.GetString(9) : null
+
                     };
                     listado.Add(equiposkds);
                 }

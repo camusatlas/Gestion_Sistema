@@ -37,7 +37,7 @@
 </head>
 <body>
     <main>
-        <h2 class="text-center">Listado de KDS</h2>
+        <h2 class="text-center">Reporte de KDS</h2>
         <hr />
         <p>
             @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-success" })
@@ -72,10 +72,7 @@
                     <th class="text-center" style='background-color: #337ab7; color:white'>
                         @Html.DisplayNameFor(model => model.status)
                     </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.join_tienda)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>Status</th>
+
                     <th class="text-center" style='background-color: #337ab7; color:white'>Opciones</th>
                 </tr>
             </thead>
@@ -83,6 +80,7 @@
             @foreach (var item in Model)
             {
                 <tr class="text-center" style="font-size:12px;">
+
                     <td style="background-color: #dbd1d0; ">
                         @Html.DisplayFor(modelItem => item.marca)
                     </td>
@@ -110,10 +108,7 @@
                     <td style="background-color: #dbd1d0; ">
                         @Html.DisplayFor(modelItem => item.status)
                     </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.join_tienda)
-                    </td>
-                    <td style="background-color: #dbd1d0; "><i class="fa-solid fa-square-check" style="color: green;"></i></td>
+
                     <td style="background-color: #dbd1d0; font-size:12px;">
                         @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.tienda }, new { @class = "btn btn-primary" })
                         @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
@@ -133,7 +128,7 @@
     <!-- BOOTSTRAP -->
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>
-    <script src="~/Content/JS/Paginacion.js"></script>
+    <script src="~/Content/JS/Paginacion_KDS.js"></script>
     <!--  -->
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
