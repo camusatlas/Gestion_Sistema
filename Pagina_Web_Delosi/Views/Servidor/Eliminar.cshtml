@@ -1,0 +1,194 @@
+﻿@model Pagina_Web_Delosi.Servidores.Servidor
+
+<h3 class="text-center"> Estas seguro de querer eliminar el Servidor? </h3>
+<div>
+    <h4 class="text-center"> Servidor </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_tienda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_tienda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tienda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tienda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ip_servidor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ip_servidor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_servidor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_servidor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sistema_operativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sistema_operativo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.version_micros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.version_micros)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.memoria_ram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.memoria_ram)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tamano_bd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tamano_bd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ultimo_reinicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ultimo_reinicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.version_facturador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.version_facturador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ultima_venta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ultima_venta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.flg_estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.flg_estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario_crea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario_crea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_crea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_crea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario_mod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario_mod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_mod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_mod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idtecnico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idtecnico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_asignado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_asignado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Retornar", "ListadoServidor")
+        </div>
+    }
+</div>

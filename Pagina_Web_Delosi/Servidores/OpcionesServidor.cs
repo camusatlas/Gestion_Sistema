@@ -6,6 +6,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Pagina_Web_Delosi.Servidores
 {
@@ -173,6 +175,32 @@ namespace Pagina_Web_Delosi.Servidores
         }
 
         //Eliminar Servidor
+        public string Eliminar(string id)
+        {
+            string mensaje = string.Empty;
+            try
+            {
+                cn.Open();
+                using (MySqlCommand cmd = new MySqlCommand("Eliminar_Servidor", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@tienda", id);
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha eliminado {i} Servidor";
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = "Error al intentar eliminar el servidor.";
+                throw ex;
+            }
+            finally
+            {
+                cn.Close();
+            }
+            return mensaje;
+        }
+
 
     }
 

@@ -189,8 +189,8 @@
                     </td>
                     <td style="background-color: #dbd1d0; "><i class="fa-solid fa-square-check" style="color: green;"></i></td>
                     <td style="background-color: #dbd1d0; font-size:12px;">
-                        @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.tienda }, new { @class = "btn btn-success" })
-                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Actualizar", "Editar", new { id = item.tienda }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.tienda }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
