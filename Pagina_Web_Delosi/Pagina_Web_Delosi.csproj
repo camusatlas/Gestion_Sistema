@@ -344,6 +344,8 @@
     <Content Include="Views\Servidor\ListadoServidor.cshtml" />
     <Content Include="Views\WorkStation\ListadoWorkStation.cshtml" />
     <Content Include="Views\PCGerencial\ListadoPCGerencial.cshtml" />
+    <Content Include="Views\Servidor\CrearServidor.cshtml" />
+    <Content Include="Views\Servidor\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

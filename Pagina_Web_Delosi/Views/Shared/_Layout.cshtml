@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
     <link href="~/Content/CSS/StylePerfil.css" rel="stylesheet" />
-    <link href="~/Content/CSS/Loaders.css" rel="stylesheet" />
+
 
 </head>
 <body>
@@ -109,47 +109,7 @@
     <script nomodule
             src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="~/Content/JS/JavaScriptPerfile.js"></script>
-    @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-            <div class="container-fluid">
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse">
-                    <img src="../Img/icono_menu_2.jpg" style="width: 40px; height: 40px;" />
-                    <ul class="navbar-nav ms-4">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-                                Busqueda de Servidores
-                            </a>
-                            <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                                <li>@Html.ActionLink("Busque de Servidores", "Index_buscar_servidor_total", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
-                                <li>@Html.ActionLink("Datos de tienda", "Index_buscar_servidor_dato_comerciales", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
-                                <li>@Html.ActionLink("Datos de La Tienda", "Index_buscar_tienda_total", "Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
-                                <li>@Html.ActionLink("Caracteristica de Servidores", "Index_buscar_servidor_list_caracteristicas", "Servidores_Tienda", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-                                Busqueda de Punto de Venta
-                            </a>
-                            <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                                <li>@Html.ActionLink("Punto de Venta", "IndexBuscarPuntoVenta", "WorkStation", new { area = "" }, new { @class = "nav-link dropdown-item text-center" })</li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-                                Opciones
-                            </a>
-                            <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                                <li>@Html.ActionLink("Salir", "CerrarSesion", "Login", new { area = "" }, new { @class = "nav-link dropdown-item text-center" })</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    *@
+
     <div class="container body-content">
         @RenderBody()
         <footer>
