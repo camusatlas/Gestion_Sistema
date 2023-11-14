@@ -54,15 +54,15 @@ namespace Pagina_Web_Delosi.Servidores
         }
 
         // Eliminar
-        public ActionResult Eliminar(string id = null)
+        public ActionResult Elimina(string id = null)
         {
             if (id == null)
             {
                 return RedirectToAction("ListadoServidor");
             }
 
-            ViewBag.mensaje = Eliminar(id);
-            return View();
+            ViewBag.mensaje = db.Eliminar(id);
+            return RedirectToAction("ListadoServidor");
         }
 
         public ActionResult Index()

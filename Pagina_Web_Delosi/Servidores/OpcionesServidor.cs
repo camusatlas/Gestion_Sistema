@@ -26,7 +26,8 @@ namespace Pagina_Web_Delosi.Servidores
         cmd.CommandType = CommandType.StoredProcedure;
             try
             {
-                cn.Open();
+                if (cn.State == ConnectionState.Closed)
+                    cn.Open();
                 using (MySqlDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
@@ -68,7 +69,8 @@ namespace Pagina_Web_Delosi.Servidores
             }
             finally
             {
-                cn.Close();
+                if (cn.State == ConnectionState.Open)
+                    cn.Close();
             }
             return listado;
         }
@@ -84,27 +86,29 @@ namespace Pagina_Web_Delosi.Servidores
                 using (MySqlCommand cmd = new MySqlCommand("Ing_Servidores", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandType = CommandType.StoredProcedure;
+
                     cmd.Parameters.AddWithValue("@cod_marca", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@cod_tienda", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@tienda", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@ip_servidor", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@nom_servidor", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@modelo", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@serie", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@sistema_operativo", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@version_micros", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@memoria_ram", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@tamano_bd", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@status", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@ultimo_reinicio", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@version_facturador", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@ultima_venta", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@flg_estado", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@usuario_crea", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@fecha_crea", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@usuario_mod", reg.cod_marca);
-                    cmd.Parameters.AddWithValue("@fecha_mod", reg.cod_marca);
+                    cmd.Parameters.AddWithValue("@cod_tienda", reg.cod_tienda);
+                    cmd.Parameters.AddWithValue("@tienda", reg.tienda);
+                    cmd.Parameters.AddWithValue("@ip_servidor", reg.ip_servidor);
+                    cmd.Parameters.AddWithValue("@nom_servidor", reg.nom_servidor);
+                    cmd.Parameters.AddWithValue("@modelo", reg.modelo);
+                    cmd.Parameters.AddWithValue("@serie", reg.serie);
+                    cmd.Parameters.AddWithValue("@sistema_operativo", reg.sistema_operativo);
+                    cmd.Parameters.AddWithValue("@version_micros", reg.version_micros);
+                    cmd.Parameters.AddWithValue("@memoria_ram", reg.memoria_ram);
+                    cmd.Parameters.AddWithValue("@tamano_bd", reg.tamano_bd);
+                    cmd.Parameters.AddWithValue("@status", reg.status);
+                    cmd.Parameters.AddWithValue("@ultimo_reinicio", reg.ultimo_reinicio);
+                    cmd.Parameters.AddWithValue("@version_facturador", reg.version_facturador);
+                    cmd.Parameters.AddWithValue("@ultima_venta", reg.ultima_venta);
+                    cmd.Parameters.AddWithValue("@flg_estado", reg.flg_estado);
+                    cmd.Parameters.AddWithValue("@usuario_crea", reg.usuario_crea);
+                    cmd.Parameters.AddWithValue("@fecha_crea", reg.fecha_crea);
+                    cmd.Parameters.AddWithValue("@usuario_mod", reg.usuario_mod);
+                    cmd.Parameters.AddWithValue("@fecha_mod", reg.fecha_mod);
+                    cmd.Parameters.AddWithValue("@idtecnico", reg.idtecnico);
+                    cmd.Parameters.AddWithValue("@fecha_asignado", reg.fecha_asignado);
 
                     int i = cmd.ExecuteNonQuery();
                     mensaje = $"Se ha registrado {i} Servidor";
@@ -128,11 +132,12 @@ namespace Pagina_Web_Delosi.Servidores
             string mensaje = string.Empty;
             try
             {
-                cn.Open();
+                if (cn.State != ConnectionState.Open)
+                    cn.Open();
                 using (MySqlCommand cmd = new MySqlCommand("usp_actualizar_servidor", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandType = CommandType.StoredProcedure;
+
                     cmd.Parameters.AddWithValue("@cod_marca", reg.cod_marca);
                     cmd.Parameters.AddWithValue("@cod_tienda", reg.cod_tienda);
                     cmd.Parameters.AddWithValue("@tienda", reg.tienda);
@@ -153,6 +158,9 @@ namespace Pagina_Web_Delosi.Servidores
                     cmd.Parameters.AddWithValue("@fecha_crea", reg.fecha_crea);
                     cmd.Parameters.AddWithValue("@usuario_mod", reg.usuario_mod);
                     cmd.Parameters.AddWithValue("@fecha_mod", reg.fecha_mod);
+                    cmd.Parameters.AddWithValue("@idtecnico", reg.idtecnico);
+                    cmd.Parameters.AddWithValue("@fecha_asignado", reg.fecha_asignado);
+
 
                     int i = cmd.ExecuteNonQuery();
                     mensaje = $"Se ha actualizado {i} Servidor con exito";
@@ -165,6 +173,7 @@ namespace Pagina_Web_Delosi.Servidores
             }
             finally
             {
+                if (cn.State != ConnectionState.Open)
                 cn.Close();
             }
             return mensaje;
@@ -178,30 +187,23 @@ namespace Pagina_Web_Delosi.Servidores
         public string Eliminar(string id)
         {
             string mensaje = string.Empty;
-            try
+            using (MySqlConnection cn = new MySqlConnection(ConfigurationManager.ConnectionStrings["ServidorDelosi"].ConnectionString))
             {
                 cn.Open();
-                using (MySqlCommand cmd = new MySqlCommand("Eliminar_Servidor", cn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@tienda", id);
-                    int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha eliminado {i} Servidor";
-                }
+                MySqlCommand cmd = new MySqlCommand("Eliminar_Servidor", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("tienda", id);
+
+                int i = cmd.ExecuteNonQuery();
+                mensaje = $"Se ha eliminado {i} Servidor";
             }
-            catch (Exception ex)
-            {
-                mensaje = "Error al intentar eliminar el servidor.";
-                throw ex;
-            }
-            finally
-            {
-                cn.Close();
-            }
+
             return mensaje;
+
         }
 
 
     }
+
 
 }

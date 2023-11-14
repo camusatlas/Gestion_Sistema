@@ -7,7 +7,7 @@
 
 <html>
 <head>
-
+    <link href="~/Content/CSS/Loaders.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <!--  -->
     <!-- Boton de Reportes -->
@@ -190,7 +190,7 @@
                     <td style="background-color: #dbd1d0; "><i class="fa-solid fa-square-check" style="color: green;"></i></td>
                     <td style="background-color: #dbd1d0; font-size:12px;">
                         @Html.ActionLink("Actualizar", "Editar", new { id = item.tienda }, new { @class = "btn btn-success" })
-                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.tienda }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Eliminar", "Elimina", new { id = item.tienda }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
@@ -234,5 +234,6 @@
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
     <!--  -->
+    <script src="~/Content/JS/Loaders.js"></script>
 </body>
 </html>

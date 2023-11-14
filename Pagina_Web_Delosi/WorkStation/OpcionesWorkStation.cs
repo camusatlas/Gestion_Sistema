@@ -57,7 +57,55 @@ namespace Pagina_Web_Delosi.WorkStation
             return listado;
         }
         // Crear Punto de WorkStation
+        public string IngresarWork(WorKStation reg)
+        {
+            string mensaje = string.Empty;
+            try
+            {
+                cn.Open();
+                using (MySqlCommand cmd = new MySqlCommand("", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.AddWithValue("", reg.cod_marca);
+                    cmd.Parameters.AddWithValue("@cod_tienda", reg.cod_tienda);
+                    cmd.Parameters.AddWithValue("@tienda", reg.tienda);
+                    cmd.Parameters.AddWithValue("@caja", reg.caja);
+                    cmd.Parameters.AddWithValue("@ip_workstation", reg.ip_workstation);
+                    cmd.Parameters.AddWithValue("@hostname", reg.hostname);
+                    cmd.Parameters.AddWithValue("@tipo", reg.tipo);
+                    cmd.Parameters.AddWithValue("@modelo", reg.modelo);
+                    cmd.Parameters.AddWithValue("@ip_workstation", reg.ip_workstation);
+                    cmd.Parameters.AddWithValue("@hostname", reg.hostname);
+                    cmd.Parameters.AddWithValue("@tipo", reg.tipo);
+                    cmd.Parameters.AddWithValue("@modelo", reg.modelo);
+                    cmd.Parameters.AddWithValue("@status", reg.status);
+                    cmd.Parameters.AddWithValue("@ultima_venta", reg.ultima_venta);
+                    cmd.Parameters.AddWithValue("@flg_estado", reg.flg_estado);
+                    cmd.Parameters.AddWithValue("@usuario_crea", reg.usuario_crea);
+                    cmd.Parameters.AddWithValue("@fecha_crea", reg.fecha_crea);
+                    cmd.Parameters.AddWithValue("@flg_estado", reg.usuario_mod);
+                    cmd.Parameters.AddWithValue("@usuario_mod", reg.fecha_mod);
+                    cmd.Parameters.AddWithValue("@fecha_crea", reg.fecha_crea);
+                    cmd.Parameters.AddWithValue("@usuario_mod", reg.usuario_mod);
+                    cmd.Parameters.AddWithValue("@fecha_mod", reg.fecha_mod);
+                    cmd.Parameters.AddWithValue("@version_facturador", reg.version_facturador);
+
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha registrado {i} WorkStation Nuevo";
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = "Error al intentar ingresar nuevo WorkStation";
+                throw ex;
+            }
+            finally
+            {
+                cn.Close();
+            }
+            return mensaje;
+        }
 
         //Actualizar WorkStation
 
