@@ -41,9 +41,12 @@
     <main>
         <h2 class="text-center">Registro de Servidores</h2>
         <hr />
-        <p>
-            @Html.ActionLink("Ingresar", "CrearServidor", null, new { @class = "btn btn-primary" })
-        </p>
+        <div>
+            <p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIngresar">Ingresar</button>
+            </p>
+        </div>
+        @*Html.ActionLink("Ingresar", "CrearServidor")*@
         <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
             <thead class="text-center">
                 <tr style="font-size:12px">
@@ -197,7 +200,76 @@
 
         </table>
         <hr style="height:5px;" />
+
     </main>
+
+    <div class="modal fade" id="modalIngresar" tabindex="-1" role="dialog" aria-labelledby="modalIngresarLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="modalIngresarLabel">Ingresar Servidor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí puedes agregar los campos o contenido del formulario para ingresar el servidor -->
+                    <!-- Ejemplo: -->
+                    <form>
+                        <!-- Campos del formulario -->
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">Código de Marca</label>
+                            <input type="text" class="form-control" id="cod_marca" placeholder="Ingrese el código de tienda" maxlength="3">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">Código Tienda</label>
+                            <input type="text" class="form-control" id="cod_tienda" placeholder="Ingrese el código de la tienda" maxlength="3">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">Tienda</label>
+                            <input type="text" class="form-control" id="tienda" placeholder="Ingrese el nombre de la Tienda" maxlength="250">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">IP Servidor</label>
+                            <input type="text" class="form-control" id="ip_servidor" placeholder="Ingrese la IP del Servisor" maxlength="20">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">Nombre del Servidor</label>
+                            <input type="text" class="form-control" id="nom_servidor" placeholder="Ingrese el nombre del servidor" maxlength="50">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">Modelo de Equipo</label>
+                            <input type="text" class="form-control" id="modelo" placeholder="Ingrese el Modelo de Equipo" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">Serie</label>
+                            <input type="text" class="form-control" id="serie" placeholder="Ingrese la serie del Equipo" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">Version Micros</label>
+                            <input type="text" class="form-control" id="version_micros" placeholder="Ingrese la vercion del Micros" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">Memoria Ram</label>
+                            <input type="text" class="form-control" id="memoria_ram" placeholder="Ingrese la memoria ram" maxlength="30">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="~/Content/JS/Ejecucion_Boton.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
