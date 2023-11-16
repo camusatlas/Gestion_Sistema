@@ -7,6 +7,7 @@ using System.Web;
 
 using System.Data;
 using Pagina_Web_Delosi.WorkStation;
+using Pagina_Web_Delosi.Servidores;
 
 namespace Pagina_Web_Delosi.WorkStation
 {
@@ -57,7 +58,7 @@ namespace Pagina_Web_Delosi.WorkStation
             return listado;
         }
         // Crear Punto de WorkStation
-        public string IngresarWork(WorKStation reg)
+        public string IngresarWorkSation(WorKStation reg)
         {
             string mensaje = string.Empty;
             try
@@ -108,10 +109,81 @@ namespace Pagina_Web_Delosi.WorkStation
         }
 
         //Actualizar WorkStation
+        public string ActualizarWorkStation(WorKStation reg)
+        {
+            string mensaje = string.Empty;
+            try
+            {
+                if (cn.State != ConnectionState.Open)
+                    cn.Open();
+                using (MySqlCommand cmd = new MySqlCommand("usp_actualizar_servidor", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.AddWithValue("", reg.cod_marca);
+                    cmd.Parameters.AddWithValue("@cod_tienda", reg.cod_tienda);
+                    cmd.Parameters.AddWithValue("@tienda", reg.tienda);
+                    cmd.Parameters.AddWithValue("@caja", reg.caja);
+                    cmd.Parameters.AddWithValue("@ip_workstation", reg.ip_workstation);
+                    cmd.Parameters.AddWithValue("@hostname", reg.hostname);
+                    cmd.Parameters.AddWithValue("@tipo", reg.tipo);
+                    cmd.Parameters.AddWithValue("@modelo", reg.modelo);
+                    cmd.Parameters.AddWithValue("@ip_workstation", reg.ip_workstation);
+                    cmd.Parameters.AddWithValue("@hostname", reg.hostname);
+                    cmd.Parameters.AddWithValue("@tipo", reg.tipo);
+                    cmd.Parameters.AddWithValue("@modelo", reg.modelo);
+                    cmd.Parameters.AddWithValue("@status", reg.status);
+                    cmd.Parameters.AddWithValue("@ultima_venta", reg.ultima_venta);
+                    cmd.Parameters.AddWithValue("@flg_estado", reg.flg_estado);
+                    cmd.Parameters.AddWithValue("@usuario_crea", reg.usuario_crea);
+                    cmd.Parameters.AddWithValue("@fecha_crea", reg.fecha_crea);
+                    cmd.Parameters.AddWithValue("@flg_estado", reg.usuario_mod);
+                    cmd.Parameters.AddWithValue("@usuario_mod", reg.fecha_mod);
+                    cmd.Parameters.AddWithValue("@fecha_crea", reg.fecha_crea);
+                    cmd.Parameters.AddWithValue("@usuario_mod", reg.usuario_mod);
+                    cmd.Parameters.AddWithValue("@fecha_mod", reg.fecha_mod);
+                    cmd.Parameters.AddWithValue("@version_facturador", reg.version_facturador);
+
+
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha actualizado {i} Servidor con exito";
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = "Error al intenar ingresar el servidor.";
+                throw ex;
+            }
+            finally
+            {
+                if (cn.State != ConnectionState.Open)
+                    cn.Close();
+            }
+            return mensaje;
+        }
+        public WorKStation Buscar(string id)
+        {
+            return workstation().FirstOrDefault(x => x.tienda == id);
+        }
 
         // Eliminar WorkStation
+        public string EliminarWorkSation(string id)
+        {
+            string mensaje = string.Empty;
+            using (MySqlConnection cn = new MySqlConnection(ConfigurationManager.ConnectionStrings["ServidorDelosi"].ConnectionString))
+            {
+                cn.Open();
+                MySqlCommand cmd = new MySqlCommand("Eliminar_WorkStation", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("tienda", id);
 
+                int i = cmd.ExecuteNonQuery();
+                mensaje = $"Se ha eliminado {i} WorkSation";
+            }
+
+            return mensaje;
+
+        }
 
 
 

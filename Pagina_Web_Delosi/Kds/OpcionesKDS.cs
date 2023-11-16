@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Web;
+using Pagina_Web_Delosi.Servidores;
 
 namespace Pagina_Web_Delosi.Kds
 {
@@ -51,14 +52,106 @@ namespace Pagina_Web_Delosi.Kds
         }
 
         // Crear KDS
+        public string IngresarKDS(EquiposKds reg)
+        {
 
+            string mensaje = string.Empty;
+            try
+            {
+                cn.Open();
+                using (MySqlCommand cmd = new MySqlCommand("Ing_Servidores", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.AddWithValue("@cod_marca", reg.empresa);
+                    cmd.Parameters.AddWithValue("@cod_tienda", reg.marca);
+                    cmd.Parameters.AddWithValue("@tienda", reg.tienda);
+                    cmd.Parameters.AddWithValue("@ip_servidor", reg.nombre_tienda);
+                    cmd.Parameters.AddWithValue("@nom_servidor", reg.provicia);
+                    cmd.Parameters.AddWithValue("@modelo", reg.departamento);
+                    cmd.Parameters.AddWithValue("@serie", reg.distrito);
+                    cmd.Parameters.AddWithValue("@sistema_operativo", reg.ip_kds);
+                    cmd.Parameters.AddWithValue("@version_micros", reg.hostname);
+                    cmd.Parameters.AddWithValue("@memoria_ram", reg.status);
+
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha registrado {i} Servidor";
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = "Error al intenar ingresar el servidor.";
+                throw ex;
+            }
+            finally
+            {
+                cn.Close();
+            }
+            return mensaje;
+        }
 
         // Actualizar KDS
+        public string ActualizarKDS(EquiposKds reg)
+        {
+            string mensaje = string.Empty;
+            try
+            {
+                if (cn.State != ConnectionState.Open)
+                    cn.Open();
+                using (MySqlCommand cmd = new MySqlCommand("usp_actualizar_servidor", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-        
+                    cmd.Parameters.AddWithValue("@cod_marca", reg.empresa);
+                    cmd.Parameters.AddWithValue("@cod_tienda", reg.marca);
+                    cmd.Parameters.AddWithValue("@tienda", reg.tienda);
+                    cmd.Parameters.AddWithValue("@ip_servidor", reg.nombre_tienda);
+                    cmd.Parameters.AddWithValue("@nom_servidor", reg.provicia);
+                    cmd.Parameters.AddWithValue("@modelo", reg.departamento);
+                    cmd.Parameters.AddWithValue("@serie", reg.distrito);
+                    cmd.Parameters.AddWithValue("@sistema_operativo", reg.ip_kds);
+                    cmd.Parameters.AddWithValue("@version_micros", reg.hostname);
+                    cmd.Parameters.AddWithValue("@memoria_ram", reg.status);
+
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha actualizado {i} Servidor con exito";
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = "Error al intenar ingresar el servidor.";
+                throw ex;
+            }
+            finally
+            {
+                if (cn.State != ConnectionState.Open)
+                    cn.Close();
+            }
+            return mensaje;
+        }
+        public EquiposKds Buscar(string id)
+        {
+            return kds().FirstOrDefault(x => x.tienda == id);
+        }
+
         // Eliminar KDS
+        public string EliminarKDS(string id)
+        {
+            string mensaje = string.Empty;
+            using (MySqlConnection cn = new MySqlConnection(ConfigurationManager.ConnectionStrings["ServidorDelosi"].ConnectionString))
+            {
+                cn.Open();
+                MySqlCommand cmd = new MySqlCommand("Eliminar_Servidor", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("tienda", id);
 
+                int i = cmd.ExecuteNonQuery();
+                mensaje = $"Se ha eliminado {i} Servidor";
+            }
+
+            return mensaje;
+
+        }
 
     }
 }
