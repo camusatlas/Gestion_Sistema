@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pagina_Web_Delosi.Servidores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,50 @@ namespace Pagina_Web_Delosi.PCGerencial
         public ActionResult ListadoPCGerencial()
         {
             return View(db.pcgerencial());
+        }
+
+        // Agregar PCGerencial
+        public ActionResult CrearPCGerencial()
+        {
+            ViewBag.pcgerencial = new SelectList(db.pcgerencial(), "cod_marca", "cod_tienda", "tienda");
+            return View(new PCGerencial());
+        }
+
+        [HttpPost]
+        public ActionResult CrearPCGerencial(PCGerencial reg)
+        {
+            ViewBag.mensaje = db.IngresarPCGerencial(reg);
+            ViewBag.pcgerencial = new SelectList(db.pcgerencial(), "cod_marca", "tienda");
+            return View(reg);
+        }
+
+        // Actualizar PCGerencial
+        public ActionResult EditarPCGerencial(string id)
+        {
+            PCGerencial reg = db.Buscar(id);
+
+            ViewBag.pcgerencial = new SelectList(db.pcgerencial(), "cod_marca", "tienda");
+            return View(reg);
+        }
+
+        [HttpPost]
+        public ActionResult EditarPCGerencial(PCGerencial reg)
+        {
+            ViewBag.mensaje = db.ActualizarPCGerencial(reg);
+            ViewBag.pcgerencial = new SelectList(db.pcgerencial(), "cod_marca", "tienda");
+            return View(reg);
+        }
+
+        // Eliminar PCGerencial
+        public ActionResult EliminaPCGErencial(string id = null)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("ListadoServidor");
+            }
+
+            ViewBag.mensaje = db.Eliminar(id);
+            return RedirectToAction("ListadoServidor");
         }
 
         public ActionResult Index()
