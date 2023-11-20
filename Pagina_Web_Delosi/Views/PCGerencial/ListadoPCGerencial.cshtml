@@ -40,7 +40,7 @@
         <h2 class="text-center">Registro de PCGerencial</h2>
         <hr />
         <p>
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Agregar", "CrearPCGerencial", null, new { @class = "btn btn-primary" })
         </p>
         <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
             <thead class="text-center">
@@ -149,8 +149,8 @@
                         @Html.DisplayFor(modelItem => item.fecha_mod)
                     </td>
                     <td style="background-color: #dbd1d0; ">
-                        @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.tienda }, new { @class = "btn btn-success" })
-                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Actualizar", "EditarPCGerencial", new { id = item.tienda }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Eliminar", "EliminaPCGErencial", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>
             }

@@ -346,6 +346,12 @@
     <Content Include="Views\PCGerencial\ListadoPCGerencial.cshtml" />
     <Content Include="Views\Servidor\CrearServidor.cshtml" />
     <Content Include="Views\Servidor\Editar.cshtml" />
+    <Content Include="Views\WorkStation\CrearWorkSation.cshtml" />
+    <Content Include="Views\WorkStation\EditarWorkStation.cshtml" />
+    <Content Include="Views\PCGerencial\EditarPCGerencial.cshtml" />
+    <Content Include="Views\PCGerencial\CrearPCGerencial.cshtml" />
+    <Content Include="Views\KDS\CrearKDS.cshtml" />
+    <Content Include="Views\KDS\EditarKDS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -40,7 +40,7 @@
         <h2 class="text-center">Reporte de KDS</h2>
         <hr />
         <p>
-            @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Ingresar", "CrearKDS", null, new { @class = "btn btn-primary" })
         </p>
         <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
             <thead class="text-center">
@@ -110,8 +110,8 @@
                     </td>
 
                     <td style="background-color: #dbd1d0; font-size:12px;">
-                        @Html.ActionLink("Actualizar", "EditPuntoVenta", new { id = item.tienda }, new { @class = "btn btn-success" })
-                        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Actualizar", "EditarKDS", new { id = item.tienda }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Eliminar", "EliminaKDS", new { id = item.tienda }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
