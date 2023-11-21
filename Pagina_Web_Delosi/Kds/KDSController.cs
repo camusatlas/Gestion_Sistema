@@ -1,4 +1,5 @@
-﻿using Microsoft.Ajax.Utilities;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.Ajax.Utilities;
 using MySql.Data.MySqlClient;
 using Pagina_Web_Delosi.Servidores;
 using System;
@@ -27,14 +28,14 @@ namespace Pagina_Web_Delosi.Kds
         // Ingresar Nuevos KDS
         public ActionResult CrearKDS()
         {
-            ViewBag.kds = new SelectList(db.kds(), "cod_marca", "cod_tienda", "tienda");
+            ViewBag.kds = new SelectList(db.kds());
             return View(new EquiposKds());
         }
         [HttpPost]
         public ActionResult CrearKDS(EquiposKds reg)
         {
             ViewBag.mensaje = db.IngresarKDS(reg);
-            ViewBag.kds = new SelectList(db.kds(), "cod_marca", "tienda");
+            ViewBag.kds = new SelectList(db.kds());
             return View(reg);
         }
 
@@ -43,7 +44,7 @@ namespace Pagina_Web_Delosi.Kds
         {
             EquiposKds reg = db.Buscar(id);
 
-            ViewBag.kds = new SelectList(db.kds(), "cod_marca", "tienda");
+            ViewBag.kds = new SelectList(db.kds());
             return View(reg);
         }
 
@@ -51,7 +52,7 @@ namespace Pagina_Web_Delosi.Kds
         public ActionResult EditarKDS(EquiposKds reg)
         {
             ViewBag.mensaje = db.ActualizarKDS(reg);
-            ViewBag.kds = new SelectList(db.kds(), "cod_marca", "tienda");
+            ViewBag.kds = new SelectList(db.kds());
             return View(reg);
         }
 

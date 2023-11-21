@@ -51,17 +51,22 @@
 
 		columnDefs: [
 			{
-				target: 3,
+				target: 0,
 				visible: false,
 				searchable: false
 			},
 			{
 				target: 4,
 				visible: false,
-				searchable: false,
+				searchable: false
 			},
 			{
 				target: 5,
+				visible: false,
+				searchable: false,
+			},
+			{
+				target: 6,
 				visible: false,
 				searchable: false,
 			},

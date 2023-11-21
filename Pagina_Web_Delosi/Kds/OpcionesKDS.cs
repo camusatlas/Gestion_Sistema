@@ -27,16 +27,17 @@ namespace Pagina_Web_Delosi.Kds
                 {
                     EquiposKds equiposkds = new EquiposKds()
                     {
-                        empresa = !dr.IsDBNull(0) ? dr.GetString(0) : null,
-                        marca = !dr.IsDBNull(1) ? dr.GetString(1) : null,
-                        tienda = !dr.IsDBNull(2) ? dr.GetString(2) : null,
-                        nombre_tienda = !dr.IsDBNull(3) ? dr.GetString(3) : null,
-                        provincia = !dr.IsDBNull(4) ? dr.GetString(4) : null,
-                        departamento = !dr.IsDBNull(5) ? dr.GetString(5) : null,
-                        distrito = !dr.IsDBNull(6) ? dr.GetString(6) : null,
-                        ip_kds = !dr.IsDBNull(7) ? dr.GetString(7) : null,
-                        hostname = !dr.IsDBNull(8) ? dr.GetString(8) : null,
-                        status = !dr.IsDBNull(9) ? dr.GetString(9) : null
+                        id = !dr.IsDBNull(0) ? dr.GetString(0) : null,
+                        empresa = !dr.IsDBNull(1) ? dr.GetString(1) : null,
+                        marca = !dr.IsDBNull(2) ? dr.GetString(2) : null,
+                        tienda = !dr.IsDBNull(3) ? dr.GetString(3) : null,
+                        nombre_tienda = !dr.IsDBNull(4) ? dr.GetString(4) : null,
+                        provincia = !dr.IsDBNull(5) ? dr.GetString(5) : null,
+                        departamento = !dr.IsDBNull(6) ? dr.GetString(6) : null,
+                        distrito = !dr.IsDBNull(7) ? dr.GetString(7) : null,
+                        ip_kds = !dr.IsDBNull(8) ? dr.GetString(8) : null,
+                        hostname = !dr.IsDBNull(9) ? dr.GetString(9) : null,
+                        status = !dr.IsDBNull(10) ? dr.GetString(10) : null
 
                     };
                     listado.Add(equiposkds);
@@ -63,6 +64,7 @@ namespace Pagina_Web_Delosi.Kds
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.AddWithValue("@id", reg.id);
                     cmd.Parameters.AddWithValue("@empresa", reg.empresa);
                     cmd.Parameters.AddWithValue("@marca", reg.marca);
                     cmd.Parameters.AddWithValue("@tienda", reg.tienda);
@@ -96,12 +98,13 @@ namespace Pagina_Web_Delosi.Kds
             string mensaje = string.Empty;
             try
             {
-                if (cn.State != ConnectionState.Open)
+
                     cn.Open();
                 using (MySqlCommand cmd = new MySqlCommand("ActualizarKDS", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.AddWithValue("@id", reg.id);
                     cmd.Parameters.AddWithValue("@empresa", reg.empresa);
                     cmd.Parameters.AddWithValue("@marca", reg.marca);
                     cmd.Parameters.AddWithValue("@tienda", reg.tienda);
@@ -124,7 +127,7 @@ namespace Pagina_Web_Delosi.Kds
             }
             finally
             {
-                if (cn.State != ConnectionState.Open)
+
                     cn.Close();
             }
             return mensaje;
@@ -143,7 +146,7 @@ namespace Pagina_Web_Delosi.Kds
                 cn.Open();
                 MySqlCommand cmd = new MySqlCommand("EliminarKDS", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("tienda", id);
+                cmd.Parameters.AddWithValue("@id", id);
 
                 int i = cmd.ExecuteNonQuery();
                 mensaje = $"Se ha eliminado {i} KDS";

@@ -45,6 +45,13 @@
         <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
             <thead class="text-center">
                 <tr style="font-size:12px">
+
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <th class="text-center" style='background-color: #337ab7; color:white'>
+                        @Html.DisplayNameFor(model => model.empresa)
+                    </th>
                     <th class="text-center" style='background-color: #337ab7; color:white'>
                         @Html.DisplayNameFor(model => model.marca)
                     </th>
@@ -81,6 +88,12 @@
             {
                 <tr class="text-center" style="font-size:12px;">
 
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.empresa)
+                    </td>
                     <td style="background-color: #dbd1d0; ">
                         @Html.DisplayFor(modelItem => item.marca)
                     </td>
