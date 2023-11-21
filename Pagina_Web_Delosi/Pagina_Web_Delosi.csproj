@@ -234,6 +234,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Home\HomeController.cs" />
     <Compile Include="Home\LoginController.cs" />
+    <Compile Include="Inventario\Equipos.cs" />
+    <Compile Include="Inventario\Estado.cs" />
+    <Compile Include="Inventario\Inventario.cs" />
+    <Compile Include="Inventario\Procedimiento_Inventario.cs" />
+    <Compile Include="Inventario\Proveedor.cs" />
+    <Compile Include="Inventario\Responsable.cs" />
+    <Compile Include="Inventario\Sistema_Operativo.cs" />
+    <Compile Include="Inventario\Tipo_Equipo.cs" />
     <Compile Include="Kds\OpcionesKDS.cs" />
     <Compile Include="PCGerenciales.cs" />
     <Compile Include="PCGerencial\OpcionesPCGerencial.cs" />
