@@ -12,7 +12,7 @@ namespace Pagina_Web_Delosi.Kds
         [Display(Name = "Marca")] public string marca { get; set; }
         [Display(Name = "Tienda")] public string tienda { get; set; }
         [Display(Name = "Nombre de Tienda")] public string nombre_tienda { get; set; }
-        [Display(Name = "Provincia")] public string provicia { get; set; }
+        [Display(Name = "Provincia")] public string provincia { get; set; }
         [Display(Name = "Departamento")] public string departamento { get; set; }
         [Display(Name = "Distrito")] public string distrito { get; set; }
         [Display(Name = "IP KDS")] public string ip_kds { get; set; }

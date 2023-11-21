@@ -60,11 +60,11 @@ namespace Pagina_Web_Delosi.Kds
         {
             if (id == null)
             {
-                return RedirectToAction("ListadoServidor");
+                return RedirectToAction("BuscarKDS");
             }
 
-            ViewBag.mensaje = db.EliminarKDS(id);
-            return RedirectToAction("ListadoServidor");
+            ViewBag.mensaje = db.EliminaKDS(id);
+            return RedirectToAction("BuscarKDS");
         }
 
         public ActionResult Index()

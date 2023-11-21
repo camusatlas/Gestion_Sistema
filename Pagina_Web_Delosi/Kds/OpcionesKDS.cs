@@ -31,7 +31,7 @@ namespace Pagina_Web_Delosi.Kds
                         marca = !dr.IsDBNull(1) ? dr.GetString(1) : null,
                         tienda = !dr.IsDBNull(2) ? dr.GetString(2) : null,
                         nombre_tienda = !dr.IsDBNull(3) ? dr.GetString(3) : null,
-                        provicia = !dr.IsDBNull(4) ? dr.GetString(4) : null,
+                        provincia = !dr.IsDBNull(4) ? dr.GetString(4) : null,
                         departamento = !dr.IsDBNull(5) ? dr.GetString(5) : null,
                         distrito = !dr.IsDBNull(6) ? dr.GetString(6) : null,
                         ip_kds = !dr.IsDBNull(7) ? dr.GetString(7) : null,
@@ -59,20 +59,20 @@ namespace Pagina_Web_Delosi.Kds
             try
             {
                 cn.Open();
-                using (MySqlCommand cmd = new MySqlCommand("Ing_Servidores", cn))
+                using (MySqlCommand cmd = new MySqlCommand("IngresarKDS", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@cod_marca", reg.empresa);
-                    cmd.Parameters.AddWithValue("@cod_tienda", reg.marca);
+                    cmd.Parameters.AddWithValue("@empresa", reg.empresa);
+                    cmd.Parameters.AddWithValue("@marca", reg.marca);
                     cmd.Parameters.AddWithValue("@tienda", reg.tienda);
-                    cmd.Parameters.AddWithValue("@ip_servidor", reg.nombre_tienda);
-                    cmd.Parameters.AddWithValue("@nom_servidor", reg.provicia);
-                    cmd.Parameters.AddWithValue("@modelo", reg.departamento);
-                    cmd.Parameters.AddWithValue("@serie", reg.distrito);
-                    cmd.Parameters.AddWithValue("@sistema_operativo", reg.ip_kds);
-                    cmd.Parameters.AddWithValue("@version_micros", reg.hostname);
-                    cmd.Parameters.AddWithValue("@memoria_ram", reg.status);
+                    cmd.Parameters.AddWithValue("@nombre_tienda", reg.nombre_tienda);
+                    cmd.Parameters.AddWithValue("@provincia", reg.provincia);
+                    cmd.Parameters.AddWithValue("@departamento", reg.departamento);
+                    cmd.Parameters.AddWithValue("@distrito", reg.distrito);
+                    cmd.Parameters.AddWithValue("@ip_kds", reg.ip_kds);
+                    cmd.Parameters.AddWithValue("@hostname", reg.hostname);
+                    cmd.Parameters.AddWithValue("@status", reg.status);
 
                     int i = cmd.ExecuteNonQuery();
                     mensaje = $"Se ha registrado {i} Servidor";
@@ -98,29 +98,29 @@ namespace Pagina_Web_Delosi.Kds
             {
                 if (cn.State != ConnectionState.Open)
                     cn.Open();
-                using (MySqlCommand cmd = new MySqlCommand("usp_actualizar_servidor", cn))
+                using (MySqlCommand cmd = new MySqlCommand("ActualizarKDS", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@cod_marca", reg.empresa);
-                    cmd.Parameters.AddWithValue("@cod_tienda", reg.marca);
+                    cmd.Parameters.AddWithValue("@empresa", reg.empresa);
+                    cmd.Parameters.AddWithValue("@marca", reg.marca);
                     cmd.Parameters.AddWithValue("@tienda", reg.tienda);
-                    cmd.Parameters.AddWithValue("@ip_servidor", reg.nombre_tienda);
-                    cmd.Parameters.AddWithValue("@nom_servidor", reg.provicia);
-                    cmd.Parameters.AddWithValue("@modelo", reg.departamento);
-                    cmd.Parameters.AddWithValue("@serie", reg.distrito);
-                    cmd.Parameters.AddWithValue("@sistema_operativo", reg.ip_kds);
-                    cmd.Parameters.AddWithValue("@version_micros", reg.hostname);
-                    cmd.Parameters.AddWithValue("@memoria_ram", reg.status);
+                    cmd.Parameters.AddWithValue("@nombre_tienda", reg.nombre_tienda);
+                    cmd.Parameters.AddWithValue("@provincia", reg.provincia);
+                    cmd.Parameters.AddWithValue("@departamento", reg.departamento);
+                    cmd.Parameters.AddWithValue("@distrito", reg.distrito);
+                    cmd.Parameters.AddWithValue("@ip_kds", reg.ip_kds);
+                    cmd.Parameters.AddWithValue("@hostname", reg.hostname);
+                    cmd.Parameters.AddWithValue("@status", reg.status);
 
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha actualizado {i} Servidor con exito";
+                    mensaje = $"Se ha actualizado {i} KDS con exito";
                 }
             }
-            catch (Exception ex)
+            catch (Exception em)
             {
-                mensaje = "Error al intenar ingresar el servidor.";
-                throw ex;
+                mensaje = "Error al intenar ingresar el KDS.";
+                throw em;
             }
             finally
             {
@@ -135,18 +135,18 @@ namespace Pagina_Web_Delosi.Kds
         }
 
         // Eliminar KDS
-        public string EliminarKDS(string id)
+        public string EliminaKDS(string id)
         {
             string mensaje = string.Empty;
             using (MySqlConnection cn = new MySqlConnection(ConfigurationManager.ConnectionStrings["ServidorDelosi"].ConnectionString))
             {
                 cn.Open();
-                MySqlCommand cmd = new MySqlCommand("Eliminar_Servidor", cn);
+                MySqlCommand cmd = new MySqlCommand("EliminarKDS", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("tienda", id);
 
                 int i = cmd.ExecuteNonQuery();
-                mensaje = $"Se ha eliminado {i} Servidor";
+                mensaje = $"Se ha eliminado {i} KDS";
             }
 
             return mensaje;
