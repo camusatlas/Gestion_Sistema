@@ -26,14 +26,14 @@ namespace Pagina_Web_Delosi.Inventario
         [Display(Name = "Estado")] public DateTime fechasalida { get; set; }
         [Display(Name = "Estado")] public string id_tecnico { get; set; }
         [Display(Name = "Estado")] public int tiket { get; set; }
-        [Display(Name = "Estado")] public string num_guia_salida { get; set; }
+        [Display(Name = "Estado")] public int num_guia_salida { get; set; }
         [Display(Name = "Estado")] public string id_proveeor { get; set; }
         [Display(Name = "Estado")] public string orden_compra { get; set; }
         [Display(Name = "Estado")] public string orden_interna { get; set; }
         [Display(Name = "Estado")] public string afecoactivo_fijo { get; set; }
         [Display(Name = "Estado")] public string almacen_ingreso { get; set; }
         [Display(Name = "Estado")] public string cod_material_sap { get; set; }
-        [Display(Name = "Estado")] public string razon_social { get; set; }
+        [Display(Name = "Estado")] public int razon_social { get; set; }
         [Display(Name = "Estado")] public string prioridad { get; set; }
         [Display(Name = "Estado")] public string id_sistem_operativo { get; set; }
         [Display(Name = "Estado")] public string direction_mac { get; set; }
