@@ -243,6 +243,8 @@
     <Compile Include="Inventario\Sistema_Operativo.cs" />
     <Compile Include="Inventario\Tipo_Equipo.cs" />
     <Compile Include="Kds\OpcionesKDS.cs" />
+    <Compile Include="Marcas_Empresa\Empresa.cs" />
+    <Compile Include="Marcas_Empresa\Marca.cs" />
     <Compile Include="PCGerenciales.cs" />
     <Compile Include="PCGerencial\OpcionesPCGerencial.cs" />
     <Compile Include="PCGerencial\PCGerencial.cs" />

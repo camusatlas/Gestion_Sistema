@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using Pagina_Web_Delosi.Servidores;
+using Pagina_Web_Delosi.Marcas_Empresa;
 
 namespace Pagina_Web_Delosi.Kds
 {
@@ -27,7 +28,7 @@ namespace Pagina_Web_Delosi.Kds
                 {
                     EquiposKds equiposkds = new EquiposKds()
                     {
-                        id = !dr.IsDBNull(0) ? dr.GetString(0) : null,
+                        id = dr.GetInt32(0),
                         empresa = !dr.IsDBNull(1) ? dr.GetString(1) : null,
                         marca = !dr.IsDBNull(2) ? dr.GetString(2) : null,
                         tienda = !dr.IsDBNull(3) ? dr.GetString(3) : null,
@@ -47,6 +48,66 @@ namespace Pagina_Web_Delosi.Kds
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            return listado;
+        }
+
+        // Listado de Marca
+        public List<Marca> marca()
+        {
+            List<Marca> listado = new List<Marca>();
+            MySqlCommand cmd = new MySqlCommand("Listado_Marca", cn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            try
+            {
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Marca marc = new Marca()
+                    {
+                        id_marca = dr.GetInt32(0),
+                        nom_marca = !dr.IsDBNull(1) ? dr.GetString(1) : null,
+                    };
+                    listado.Add(marc);
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return listado;
+        }
+
+        // Listado de Empresa
+        public List<Empresa> empresa()
+        {
+            List<Empresa> listado = new List<Empresa>();
+            MySqlCommand cmd = new MySqlCommand("Listado_Empresa", cn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            try
+            {
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Empresa emp = new Empresa()
+                    {
+                        id_empresa = dr.GetInt32(0),
+                        nom_empresa = dr.GetString(1)
+                    };
+                    listado.Add(emp);
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             return listado;

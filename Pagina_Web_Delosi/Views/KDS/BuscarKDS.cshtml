@@ -2,7 +2,7 @@
 
 
 @{
-    ViewBag.Title = "IndexBuscarPuntoVenta";
+    ViewBag.Title = "BuscarKDS";
 }
 
 <!DOCTYPE html>
@@ -36,104 +36,437 @@
     <title>KDS</title>
 </head>
 <body>
-    <main class="">
-        <h2 class="text-center">Reporte de KDS</h2>
+    <main>
+        <h2 class="text-center">Registro de KDS</h2>
         <hr />
-        <p>
-            @Html.ActionLink("Ingresar", "CrearKDS", null, new { @class = "btn btn-primary" })
-        </p>
-        <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
-            <thead class="text-center">
-                <tr style="font-size:12px">
+        <div>
+            <p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIngresar">Ingresar</button>
+            </p>
+        </div>
+        <div>
+            <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
+                <thead class="text-center">
+                    <tr style="font-size:12px">
 
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.id)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.empresa)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.marca)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.tienda)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.nombre_tienda)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.provincia)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.departamento)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.distrito)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.ip_kds)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.hostname)
-                    </th>
-                    <th class="text-center" style='background-color: #337ab7; color:white'>
-                        @Html.DisplayNameFor(model => model.status)
-                    </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.id)
+                        </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.empresa)
+                        </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.marca)
+                        </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.tienda)
+                        </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.nombre_tienda)
+                        </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.provincia)
+                        </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.departamento)
+                        </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.distrito)
+                        </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.ip_kds)
+                        </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.hostname)
+                        </th>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>
+                            @Html.DisplayNameFor(model => model.status)
+                        </th>
 
-                    <th class="text-center" style='background-color: #337ab7; color:white'>Opciones</th>
-                </tr>
-            </thead>
+                        <th class="text-center" style='background-color: #337ab7; color:white'>Opciones</th>
+                    </tr>
+                </thead>
 
-            @foreach (var item in Model)
-            {
-                <tr class="text-center" style="font-size:12px;">
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center" style="font-size:12px;">
 
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.id)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.empresa)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.marca)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.tienda)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.nombre_tienda)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.provincia)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.departamento)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.distrito)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.ip_kds)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.hostname)
-                    </td>
-                    <td style="background-color: #dbd1d0; ">
-                        @Html.DisplayFor(modelItem => item.status)
-                    </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.id
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.empresa
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.marca
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.tienda
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.nombre_tienda
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.provincia
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.departamento
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.distrito
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.ip_kds
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.hostname
+                        </td>
+                        <td style="background-color: #dbd1d0; ">
+                            @item.status
+                        </td>
 
-                    <td style="background-color: #dbd1d0; font-size:12px;">
-                        @Html.ActionLink("Actualizar", "EditarKDS", new { id = item.tienda }, new { @class = "btn btn-success" })
-                        @Html.ActionLink("Eliminar", "EliminaKDS", new { id = item.tienda }, new { @class = "btn btn-danger" })
-                    </td>
-                </tr>
-            }
+                        <td style="background-color: #dbd1d0; font-size:12px;">
 
-        </table>
-        <hr style="height:5px;" />
-        <br />
-        <br />
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalActualizar">+</button>
+
+                            @Html.ActionLink("-", "EliminaKDS", new { id = item.tienda }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+
     </main>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="modalIngresar" tabindex="-1" role="dialog" aria-labelledby="modalIngresarLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="modalIngresarLabel">Ingresar KDS</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí puedes agregar los campos o contenido del formulario para ingresar el servidor -->
+                    <!-- Ejemplo: -->
+                    <form>
+                        <!-- Campos del formulario -->
+
+                        <div class="mb-3">
+                            <label for="empresa" class="form-label">Empresa</label>
+                            <select class="form-control" id="empresa" name="empresa">
+                                <option value="id_empresa">[Seleccione]</option>
+                                <option value="CINDEL">CINDEL</option>
+                                <option value="DELOSI">DELOSI</option>
+                                <option value="LASINO">LASINO</option>
+                                <option value="LOYSING">LOYSING</option>
+                                <option value="SAIDEL">SAIDEL</option>
+                                <option value="TELEPIZZA ANDINA">TELEPIZZA ANDINA</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="marca" class="form-label">Marca</label>
+                            <select class="form-control" id="marca" name="marca">
+                                <option value="id_marca">[Seleccione]</option>
+                                <option value="BK">BK</option>
+                                <option value="CH">CH</option>
+                                <option value="KF">KF</option>
+                                <option value="MT">MT</option>
+                                <option value="PB">PB</option>
+                                <option value="PH">PH</option>
+                                <option value="SB">SB</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tienda" class="form-label">Tienda</label>
+                            <input type="text" class="form-control" id="tienda" placeholder="Ingresa tienda" maxlength="20">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombre_tienda" class="form-label">Nombre de la tienda</label>
+                            <input type="text" class="form-control" id="nombre_tienda" placeholder="Ingrese el nombre de la tienda" maxlength="50">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="provincia" class="form-label">Provincia</label>
+                            <input type="text" class="form-control" id="provincia" placeholder="Ingresar Provincia" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="departamento" class="form-label">Departamento</label>
+                            <input type="text" class="form-control" id="departamento" placeholder="Ingrese Departamento" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="distrito" class="form-label">Distrito</label>
+                            <input type="text" class="form-control" id="distrito" placeholder="Ingrese el Distrito" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ip_kds" class="form-label">IP</label>
+                            <input type="text" class="form-control" id="ip_kds" placeholder="Ingrese la IP" maxlength="30">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="hostname" class="form-label">HostName</label>
+                            <input type="text" class="form-control" id="hostname" placeholder="Ingrese el HostName" maxlength="30">
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <select class="form-control" id="status" name="status">
+                                <option value="-">[Seleccione]</option>
+                                <option value="OPERATIVA">OPERATIVA</option>
+                                <option value="INOPERATIVA">INOPERATIVA</option>
+                            </select>
+                        </div>
+                    </form>
+
+                    <div id="mensajeGuardadoExitosoModal" class="alert alert-success" style="display: none;">
+                        El dato se ha guardado exitosamente.
+                    </div>
+
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="guardarButton" class="btn btn-primary" value="Crear">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Actualizar -->
+    <div class="modal fade" id="modalActualizar" tabindex="-1" role="dialog" aria-labelledby="modalActualizarLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="modalActualizarLabel">Actualizar KDS</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí puedes agregar los campos o contenido del formulario para ingresar el servidor -->
+                    <!-- Ejemplo: -->
+                    <form>
+                        <!-- Campos del formulario -->
+
+                        <div class="mb-3">
+                            <label for="empresa" class="form-label">Empresa</label>
+                            <select class="form-control" id="empresa" name="empresa">
+                                <option value="id_empresa">[Seleccione]</option>
+                                <option value="CINDEL">CINDEL</option>
+                                <option value="DELOSI">DELOSI</option>
+                                <option value="LASINO">LASINO</option>
+                                <option value="LOYSING">LOYSING</option>
+                                <option value="SAIDEL">SAIDEL</option>
+                                <option value="TELEPIZZA ANDINA">TELEPIZZA ANDINA</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="marca" class="form-label">Marca</label>
+                            <select class="form-control" id="marca" name="marca">
+                                <option value="id_marca">[Seleccione]</option>
+                                <option value="BK">BK</option>
+                                <option value="CH">CH</option>
+                                <option value="KF">KF</option>
+                                <option value="MT">MT</option>
+                                <option value="PB">PB</option>
+                                <option value="PH">PH</option>
+                                <option value="SB">SB</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tienda" class="form-label">Tienda</label>
+                            <input type="text" class="form-control" id="tienda" placeholder="Ingresa tienda" maxlength="20">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombre_tienda" class="form-label">Nombre de la tienda</label>
+                            <input type="text" class="form-control" id="nombre_tienda" placeholder="Ingrese el nombre de la tienda" maxlength="50">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="provincia" class="form-label">Provincia</label>
+                            <input type="text" class="form-control" id="provincia" placeholder="Ingresar Provincia" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="departamento" class="form-label">Departamento</label>
+                            <input type="text" class="form-control" id="departamento" placeholder="Ingrese Departamento" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="distrito" class="form-label">Distrito</label>
+                            <input type="text" class="form-control" id="distrito" placeholder="Ingrese el Distrito" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ip_kds" class="form-label">IP</label>
+                            <input type="text" class="form-control" id="ip_kds" placeholder="Ingrese la IP" maxlength="30">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="hostname" class="form-label">HostName</label>
+                            <input type="text" class="form-control" id="hostname" placeholder="Ingrese el HostName" maxlength="30">
+                        </div>
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <select class="form-control" id="status" name="status">
+                                <option value="-">[Seleccione]</option>
+                                <option value="OPERATIVA">OPERATIVA</option>
+                                <option value="INOPERATIVA">INOPERATIVA</option>
+                            </select>
+                        </div>
+                    </form>
+
+                    <div id="mensajeGuardadoExitosoModal" class="alert alert-success" style="display: none;">
+                        El dato se ha guardado exitosamente.
+                    </div>
+
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="guardarButtonn" class="btn btn-primary" value="Crear">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Script Ingresar -->
+    <script>
+    $(document).ready(function() {
+        // Maneja el evento clic del Boton Crear dentro del modal
+        $('#modalIngresar').on('shown.bs.modal', function() {
+            $('#guardarButton').off('click').on('click', function (event) {
+                event.preventDefault();
+                // Obtener los valores de los campos del formulario
+                var id = $('#id').val();
+                var empresa = $('#empresa').val();
+                var marca = $('#marca').val();
+                var tienda = $('#tienda').val();
+                var nombre_tienda = $('#nombre_tienda').val();
+                var provincia = $('#provincia').val();
+                var departamento = $('#departamento').val();
+                var distrito = $('#distrito').val();
+                var ip_kds = $('#ip_kds').val();
+                var hostname = $('#hostname').val();
+                var status = $('#status').val();
+
+                // Crear un objeto con los datos para enviar al servidor
+                var datosKDS = {
+                    id: id,
+                    empresa: empresa,
+                    marca: marca,
+                    tienda: tienda,
+                    nombre_tienda: nombre_tienda,
+                    provincia: provincia,
+                    departamento: departamento,
+                    distrito: distrito,
+                    ip_kds: ip_kds,
+                    hostname: hostname,
+                    status: status
+                };
+
+                // Enviar los datos al servidor usando AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("EditarKDS", "KDS")',
+                    data: datosKDS,
+                    success: function(response) {
+                        // Manejar la respuesta del servidor
+                        console.log('Datos enviados correctamente');
+                        // Mostrar mensaje de guardado exitoso
+                        $('#mensajeGuardadoExitosoModal').show();
+                        // Cerrar el modal después de 2 segundos (2000 milisegundos)
+                        setTimeout(function () {
+                            $('#mensajeGuardadoExitosoModal').hide(); // Ocultar mensaje
+                            $('#modalIngresar').modal('hide'); // Cerrar el modal
+
+                            setTimeout(function() {
+                            window.location.href = '@Url.Action("BuscarKDS", "KDS")';
+                        }, 500);
+                        }, 1000);
+                    },
+                    error: function(error) {
+                        // Manejar los errores
+                        console.error('Error al enviar datos', error);
+                    }
+                });
+            });
+        });
+    });
+    </script>
+    <!-- Script Actualizar -->
+    <script>
+$(document).ready(function() {
+    // Maneja el evento clic del Boton Crear dentro del modal
+    $('#modalActualizar').on('shown.bs.modal', function() {
+        $('#guardarButtonn').off('click').on('click', function (event) {
+            event.preventDefault();
+            // Obtener los valores de los campos del formulario
+            var id = $('#id').val();
+            var empresa = $('#empresa').val();
+            var marca = $('#marca').val();
+            var tienda = $('#tienda').val();
+            var nombre_tienda = $('#nombre_tienda').val();
+            var provincia = $('#provincia').val();
+            var departamento = $('#departamento').val();
+            var distrito = $('#distrito').val();
+            var ip_kds = $('#ip_kds').val();
+            var hostname = $('#hostname').val();
+            var status = $('#status').val();
+
+            // Crear un objeto con los datos para enviar al servidor
+            var datosKDS = {
+                id: id,
+                empresa: empresa,
+                marca: marca,
+                tienda: tienda,
+                nombre_tienda: nombre_tienda,
+                provincia: provincia,
+                departamento: departamento,
+                distrito: distrito,
+                ip_kds: ip_kds,
+                hostname: hostname,
+                status: status
+            };
+
+            // Enviar los datos al servidor usando AJAX
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("CrearKDS", "KDS")',
+                data: datosKDS,
+                success: function(response) {
+                    // Manejar la respuesta del servidor
+                    console.log('Datos enviados correctamente');
+                    // Mostrar mensaje de guardado exitoso
+                    $('#mensajeGuardadoExitosoModal').show();
+                    // Cerrar el modal después de 2 segundos (2000 milisegundos)
+                    setTimeout(function () {
+                        $('#mensajeGuardadoExitosoModal').hide(); // Ocultar mensaje
+                        $('#modalIngresar').modal('hide'); // Cerrar el modal
+
+                        setTimeout(function() {
+                        window.location.href = '@Url.Action("BuscarKDS", "KDS")';
+                    }, 500);
+                    }, 1000);
+                },
+                error: function(error) {
+                    // Manejar los errores
+                    console.error('Error al enviar datos', error);
+                }
+            });
+        });
+    });
+});
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>

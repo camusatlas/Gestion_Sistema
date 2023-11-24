@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Pagina_Web_Delosi.Marcas_Empresa;
 using Pagina_Web_Delosi.Servidores;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,68 @@ namespace Pagina_Web_Delosi.PCGerencial
             }
             return listado;
         }
+
+
+        // Listado de Marca
+        public List<Marca> marca()
+        {
+            List<Marca> listado = new List<Marca>();
+            MySqlCommand cmd = new MySqlCommand("Listado_Marca", cn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            try
+            {
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Marca marc = new Marca()
+                    {
+                        id_marca = dr.GetInt32(0),
+                        nom_marca = !dr.IsDBNull(1) ? dr.GetString(1) : null,
+                    };
+                    listado.Add(marc);
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return listado;
+        }
+
+        // Listado de Empresa
+        public List<Empresa> empresa()
+        {
+            List<Empresa> listado = new List<Empresa>();
+            MySqlCommand cmd = new MySqlCommand("Listado_Empresa", cn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            try
+            {
+                cn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Empresa emp = new Empresa()
+                    {
+                        id_empresa = dr.GetInt32(0),
+                        nom_empresa = dr.GetString(1)
+                    };
+                    listado.Add(emp);
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return listado;
+        }
+
 
         // Agregar PCGerencial
         public string IngresarPCGerencial(PCGerencial reg)
