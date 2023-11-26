@@ -440,7 +440,7 @@ $(document).ready(function() {
             // Enviar los datos al servidor usando AJAX
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("CrearKDS", "KDS")',
+                url: '@Url.Action("EditarKDS", "KDS")',
                 data: datosKDS,
                 success: function(response) {
                     // Manejar la respuesta del servidor
