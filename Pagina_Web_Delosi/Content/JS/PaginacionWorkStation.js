@@ -89,6 +89,11 @@
 				target: 14,
 				visible: false,
 				searchable: false,
+
+				{
+				target: 14,
+				visible: false,
+				searchable: false,
 			},
 		],
 

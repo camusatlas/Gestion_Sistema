@@ -150,7 +150,7 @@
                 <div class="modal-body">
                     <!-- Aquí puedes agregar los campos o contenido del formulario para ingresar el servidor -->
                     <!-- Ejemplo: -->
-                    <form>
+                    <form id="id_form_registra">
                         <!-- Campos del formulario -->
 
                         <div class="mb-3">
@@ -400,70 +400,173 @@
         });
     });
     </script>
+    <script>
+        $(document).ready(function () {
+            // Obtener el valor seleccionado en el campo empresa
+            $('#modalIngresar #empresa').change(function () {
+                var empresaSeleccionada = $(this).val();
+
+                // Aquí debes rellenar las opciones del campo marca según la empresa seleccionada
+                actualizarMarcasSegunEmpresa(empresaSeleccionada);
+            });
+
+            // Función para actualizar las opciones del campo marca
+            function actualizarMarcasSegunEmpresa(empresa) {
+                // Vaciar opciones actuales
+                $('#modalIngresar #marca').empty();
+
+                // Llenar opciones de marca según la empresa seleccionada
+                if (empresa === 'CINDEL') {
+                    $('#modalIngresar #marca').append($('<option>', {
+                        value: 'CH',
+                        text: 'CH'
+                    }));
+                } else if (empresa === 'DELOSI') {
+                    $('#modalIngresar #marca').append($('<option>', {
+                        value: 'KF',
+                        text: 'KF'
+                    }));
+                    $('#modalIngresar #marca').append($('<option>', {
+                        value: 'PB',
+                        text: 'PB'
+                    }));
+                } else if (empresa === 'LASINO') {
+                    $('#modalIngresar #marca').append($('<option>', {
+                        value: 'SB',
+                        text: 'SB'
+                    }));
+                } else if (empresa === 'LOYSING') {
+                    $('#modalIngresar #marca').append($('<option>', {
+                        value: 'MT',
+                        text: 'MT'
+                    }));
+                } else if (empresa === 'SAIDEL') {
+                    $('#modalIngresar #marca').append($('<option>', {
+                        value: 'BK',
+                        text: 'BK'
+                    }));
+                } else if (empresa === 'TELEPIZZA ANDINA') {
+                    $('#modalIngresar #marca').append($('<option>', {
+                        value: 'PH',
+                        text: 'PH'
+                    }));
+                }
+
+                // Agregar opción por defecto
+                $('#modalActualizar #marca').prepend($('<option>', {
+                    value: 'id_marca',
+                    text: '[Seleccione]'
+                })).val('id_marca');
+            }
+        });
+    </script>
+
+
+
     <!-- Script Actualizar -->
     <script>
 $(document).ready(function() {
-    // Maneja el evento clic del Boton Crear dentro del modal
-    $('#modalActualizar').on('shown.bs.modal', function() {
-        $('#guardarButtonn').off('click').on('click', function (event) {
-            event.preventDefault();
-            // Obtener los valores de los campos del formulario
-            var id = $('#id').val();
-            var empresa = $('#empresa').val();
-            var marca = $('#marca').val();
-            var tienda = $('#tienda').val();
-            var nombre_tienda = $('#nombre_tienda').val();
-            var provincia = $('#provincia').val();
-            var departamento = $('#departamento').val();
-            var distrito = $('#distrito').val();
-            var ip_kds = $('#ip_kds').val();
-            var hostname = $('#hostname').val();
-            var status = $('#status').val();
+    // Maneja el evento clic del Boton Editar en cada fila de la tabla
+    $('.btn-editar').on('click', function() {
+        var id = $(this).data('id'); // Obtener el ID del elemento a editar
 
-            // Crear un objeto con los datos para enviar al servidor
-            var datosKDS = {
-                id: id,
-                empresa: empresa,
-                marca: marca,
-                tienda: tienda,
-                nombre_tienda: nombre_tienda,
-                provincia: provincia,
-                departamento: departamento,
-                distrito: distrito,
-                ip_kds: ip_kds,
-                hostname: hostname,
-                status: status
-            };
-
-            // Enviar los datos al servidor usando AJAX
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("EditarKDS", "KDS")',
-                data: datosKDS,
-                success: function(response) {
-                    // Manejar la respuesta del servidor
-                    console.log('Datos enviados correctamente');
-                    // Mostrar mensaje de guardado exitoso
-                    $('#mensajeGuardadoExitosoModal').show();
-                    // Cerrar el modal después de 2 segundos (2000 milisegundos)
-                    setTimeout(function () {
-                        $('#mensajeGuardadoExitosoModal').hide(); // Ocultar mensaje
-                        $('#modalIngresar').modal('hide'); // Cerrar el modal
-
-                        setTimeout(function() {
-                        window.location.href = '@Url.Action("BuscarKDS", "KDS")';
-                    }, 500);
-                    }, 1000);
-                },
-                error: function(error) {
-                    // Manejar los errores
-                    console.error('Error al enviar datos', error);
-                }
-            });
-        });
+        // Llamar a una función que cargue los datos en el modal
+        cargarDatosEnModal(id);
     });
+
+    // Función para cargar datos en el modal
+    function cargarDatosEnModal(id) {
+        // Realizar una petición AJAX para obtener los datos del servidor
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("ObtenerDatosKDS", "KDS")', // Reemplaza esto con la URL correcta para obtener los datos del servidor
+            data: { id: id },
+            success: function(response) {
+                // Mostrar los datos en el modal
+                $('#modalActualizar #empresa').val(response.empresa);
+                $('#modalActualizar #marca').val(response.marca);
+                $('#modalActualizar #tienda').val(response.tienda);
+                $('#modalActualizar #nombre_tienda').val(response.nombre_tienda);
+                $('#modalActualizar #provincia').val(response.provincia);
+                $('#modalActualizar #departamento').val(response.departamento);
+                $('#modalActualizar #distrito').val(response.distrito);
+                $('#modalActualizar #ip_kds').val(response.ip_kds);
+                $('#modalActualizar #hostname').val(response.hostname);
+                $('#modalActualizar #status').val(response.status);
+
+                // Mostrar el modal de actualización
+                $('#modalActualizar').modal('show');
+            },
+            error: function(error) {
+                // Manejar errores si la solicitud falla
+                console.error('Error al obtener datos del servidor', error);
+            }
+        });
+    }
 });
     </script>
+    <script>
+        $(document).ready(function () {
+            // Obtener el valor seleccionado en el campo empresa
+            $('#modalActualizar #empresa').change(function () {
+                var empresaSeleccionada = $(this).val();
+
+                // Aquí debes rellenar las opciones del campo marca según la empresa seleccionada
+                actualizarMarcasSegunEmpresa(empresaSeleccionada);
+            });
+
+            // Función para actualizar las opciones del campo marca
+            function actualizarMarcasSegunEmpresa(empresa) {
+                // Vaciar opciones actuales
+                $('#modalActualizar #marca').empty();
+
+                // Llenar opciones de marca según la empresa seleccionada
+                if (empresa === 'CINDEL') {
+                    $('#modalActualizar #marca').append($('<option>', {
+                        value: 'CH',
+                        text: 'CH'
+                    }));
+                } else if (empresa === 'DELOSI') {
+                    $('#modalActualizar #marca').append($('<option>', {
+                        value: 'KF',
+                        text: 'KF'
+                    }));
+                    $('#modalActualizar #marca').append($('<option>', {
+                        value: 'PB',
+                        text: 'PB'
+                    }));
+                } else if (empresa === 'LASINO') {
+                    $('#modalActualizar #marca').append($('<option>', {
+                        value: 'SB',
+                        text: 'SB'
+                    }));
+                } else if (empresa === 'LOYSING') {
+                    $('#modalActualizar #marca').append($('<option>', {
+                        value: 'MT',
+                        text: 'MT'
+                    }));
+                } else if (empresa === 'SAIDEL') {
+                    $('#modalActualizar #marca').append($('<option>', {
+                        value: 'BK',
+                        text: 'BK'
+                    }));
+                } else if (empresa === 'TELEPIZZA ANDINA') {
+                    $('#modalActualizar #marca').append($('<option>', {
+                        value: 'PH',
+                        text: 'PH'
+                    }));
+                }
+
+                // Agregar opción por defecto
+                $('#modalActualizar #marca').prepend($('<option>', {
+                    value: 'id_marca',
+                    text: '[Seleccione]'
+                })).val('id_marca');
+            }
+        });
+    </script>
+
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">

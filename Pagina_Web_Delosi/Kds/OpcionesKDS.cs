@@ -207,7 +207,7 @@ namespace Pagina_Web_Delosi.Kds
                 cn.Open();
                 MySqlCommand cmd = new MySqlCommand("EliminarKDS", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ip_kds", id);
+                cmd.Parameters.AddWithValue("ip_kds", id);
 
                 int i = cmd.ExecuteNonQuery();
                 mensaje = $"Se ha eliminado {i} KDS";

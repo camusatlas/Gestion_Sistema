@@ -190,7 +190,7 @@ namespace Pagina_Web_Delosi.Servidores
             using (MySqlConnection cn = new MySqlConnection(ConfigurationManager.ConnectionStrings["ServidorDelosi"].ConnectionString))
             {
                 cn.Open();
-                MySqlCommand cmd = new MySqlCommand("Eliminar_Servidor", cn);
+                MySqlCommand cmd = new MySqlCommand("EliminarServidor", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("tienda", id);
 

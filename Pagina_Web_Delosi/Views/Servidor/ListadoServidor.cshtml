@@ -196,7 +196,7 @@
 
                     <td style="background-color: #dbd1d0; font-size:12px;">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalActualizar"><i class="bi bi-pencil"></i></button>
-                        @Html.ActionLink("-", "Elimina", new { id = item.tienda }, new { @class = "btn btn-danger" })
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmarEliminacion"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>
             }
@@ -363,6 +363,25 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="confirmarEliminacion" tabindex="-1" aria-labelledby="confirmarEliminacionLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmarEliminacionLabel">Confirmar eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar este servidor?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmarBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Scrip Ediciones -->
     <script>
@@ -485,15 +504,66 @@ $(document).ready(function() {
     });
 });
     </script>
+    <!-- Eliminar -->
+    <!-- JavaScript/jQuery para gestionar la confirmación de eliminación -->
+    <script>
+        $(document).ready(function () {
+            $('.eliminar-servidor').on('click', function (e) {
+                e.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+
+                var deleteUrl = $(this).attr('href'); // Obtener la URL de eliminación desde el enlace
+                var servidorId = $(this).data('id'); // Obtener el ID del servidor a eliminar
+
+                // Asignar la URL y el ID del servidor al botón de confirmación
+                $('#confirmarBtn').attr('data-url', deleteUrl);
+                $('#confirmarBtn').attr('data-id', servidorId);
+
+                $('#confirmarEliminacion').modal('show'); // Mostrar el modal de confirmación
+            });
+
+            $('#confirmarBtn').on('click', function () {
+                var deleteUrl = $(this).attr('data-url'); // Obtener la URL de eliminación del botón de confirmación
+                var servidorId = $(this).attr('data-id'); // Obtener el ID del servidor a eliminar
+
+                // Realizar una solicitud AJAX al método de eliminación del controlador
+                $.ajax({
+                    url: deleteUrl,
+                    type: 'POST', // O el método HTTP utilizado en tu controlador
+                    data: { id: servidorId }, // Datos que se enviarán al controlador
+                    success: function (response) {
+                        // Manejar la respuesta del servidor después de eliminar el servidor
+                        // Redirigir a la página deseada o actualizar la vista, etc.
+                        window.location.reload(); // Ejemplo: recargar la página
+                    },
+                    error: function (xhr, status, error) {
+                        // Manejar errores en caso de que ocurran durante la solicitud
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
 
 
 
-
-
+    <script src="~/Content/JS/Ejecucion_Boton.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+    </script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+    </script>
     <script src="~/Content/JS/Paginacion_Servidor.js"></script>
     <!--  -->
-    
-    
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- DataTable -->
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
