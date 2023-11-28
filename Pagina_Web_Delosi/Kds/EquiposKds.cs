@@ -8,7 +8,7 @@ namespace Pagina_Web_Delosi.Kds
 {
     public class EquiposKds
     {
-        [Display(Name = "N°")] public int id { get; set; }
+
         [Display(Name = "Empresa")] public string empresa { get; set; }
         [Display(Name = "Marca")] public string marca { get; set; }
         [Display(Name = "Tienda")] public string tienda { get; set; }

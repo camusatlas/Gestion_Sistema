@@ -41,8 +41,10 @@
 <body>
     <main>
         <h2 class="text-center">Registro de WorkStation</h2>
+        <hr />
+        <br />
         <p>
-            @Html.ActionLink("Ingresar", "CrearWorkSation", null, new { @class = "btn btn-primary" })
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIngresar">Ingresar</button>
         </p>
         <table id="tablax" class="table table-bordered table-hover table-condensed mx-auto">
             <thead class="text-center">
@@ -151,10 +153,12 @@
                     <td style="background-color: #dbd1d0; ">
                         @Html.DisplayFor(modelItem => item.version_facturador)
                     </td>
-                    <td style="background-color: #dbd1d0; "><i class="fa-solid fa-square-check" style="color: green;"></i></td>
+                    <td style="background-color: #dbd1d0; ">
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
                     <td style="background-color: #dbd1d0; font-size:12px;">
-                        @Html.ActionLink("Actualizar", "EditarWorkStation", new { id = item.tienda }, new { @class = "btn btn-success" })
-                        @Html.ActionLink("Eliminar", "EliminaWorkSation", new { id = item.tienda }, new { @class = "btn btn-danger" })
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalActualizar"><i class="bi bi-pencil"></i></button>
+                        @Html.ActionLink("-", "EliminaWorkSation", new { id = item.tienda }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>
             }
@@ -164,6 +168,216 @@
         <br />
         <br />
     </main>
+
+    <!-- Modal Ingresar Datos -->
+
+    <div class="modal fade" id="modalIngresar" tabindex="-1" role="dialog" aria-labelledby="modalIngresarLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="modalIngresarLabel">Ingresar WorkSation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí puedes agregar los campos o contenido del formulario para ingresar el servidor -->
+                    <!-- Ejemplo: -->
+                    <form>
+                        <!-- Campos del formulario -->
+                        <div class="mb-3">
+                            <label for="cod_marca" class="form-label">Código de Marca</label>
+                            <select class="form-control" id="cod_marca" name="cod_marca">
+                                <option value="-">[Seleccione]</option>
+                                <option value="BK">BK</option>
+                                <option value="CH">CH</option>
+                                <option value="KF">KF</option>
+                                <option value="MT">MT</option>
+                                <option value="PB">PB</option>
+                                <option value="PH">PH</option>
+                                <option value="SB">SB</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cod_tienda" class="form-label">Código Tienda</label>
+                            <input type="text" class="form-control" id="cod_tienda" placeholder="Ingrese el código de la tienda" maxlength="3">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">Tienda</label>
+                            <input type="text" class="form-control" id="tienda" placeholder="Ingrese el nombre de la Tienda" maxlength="250">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="caja" class="form-label">Caja</label>
+                            <input type="text" class="form-control" id="caja" placeholder="Ingrese la Caja" maxlength="2">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ip_workstation" class="form-label">IP Servidor</label>
+                            <input type="text" class="form-control" id="ip_workstation" placeholder="Ingrese la IP de la WorkStation" maxlength="15">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="hostname" class="form-label">HostName</label>
+                            <input type="text" class="form-control" id="hostname" placeholder="Ingrese el Modelo de Equipo" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo</label>
+                            <input type="text" class="form-control" id="tipo" placeholder="Ingrese el Tipo de equipo" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="modelo" class="form-label">Version Micros</label>
+                            <input type="text" class="form-control" id="modelo" placeholder="Ingrese el modelo" maxlength="90">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="guardarButton" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Actualizar -->
+
+    <div class="modal fade" id="modalActualizar" tabindex="-1" role="dialog" aria-labelledby="modalActualizarLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="modalIngresarLabel">Actualizar WorkSation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí puedes agregar los campos o contenido del formulario para ingresar el servidor -->
+                    <!-- Ejemplo: -->
+                    <form>
+                        <!-- Campos del formulario -->
+                        <div class="mb-3">
+                            <label for="cod_marca" class="form-label">Código de Marca</label>
+                            <select class="form-control" id="cod_marca" name="cod_marca">
+                                <option value="-">[Seleccione]</option>
+                                <option value="BK">BK</option>
+                                <option value="CH">CH</option>
+                                <option value="KF">KF</option>
+                                <option value="MT">MT</option>
+                                <option value="PB">PB</option>
+                                <option value="PH">PH</option>
+                                <option value="SB">SB</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cod_tienda" class="form-label">Código Tienda</label>
+                            <input type="text" class="form-control" id="cod_tienda" placeholder="Ingrese el código de la tienda" maxlength="3">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombreServidor" class="form-label">Tienda</label>
+                            <input type="text" class="form-control" id="tienda" placeholder="Ingrese el nombre de la Tienda" maxlength="250">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="caja" class="form-label">Caja</label>
+                            <input type="text" class="form-control" id="caja" placeholder="Ingrese la Caja" maxlength="2">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ip_workstation" class="form-label">IP Servidor</label>
+                            <input type="text" class="form-control" id="ip_workstation" placeholder="Ingrese la IP de la WorkStation" maxlength="15">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="hostname" class="form-label">HostName</label>
+                            <input type="text" class="form-control" id="hostname" placeholder="Ingrese el Modelo de Equipo" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo</label>
+                            <input type="text" class="form-control" id="tipo" placeholder="Ingrese el Tipo de equipo" maxlength="90">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="modelo" class="form-label">Version Micros</label>
+                            <input type="text" class="form-control" id="modelo" placeholder="Ingrese el modelo" maxlength="90">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="guardarButton" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Scrip Ediciones -->
+    <script>
+        $(document).ready(function() {
+    // Maneja el evento clic del Boton Crear dentro del modal
+    $('#modalIngresar').on('shown.bs.modal', function() {
+        $('#guardarButton').off('click').on('click', function (event) {
+            event.preventDefault();
+            // Obtener los valores de los campos del formulario
+            var cod_marca = $('#cod_marca').val();
+            var cod_tienda = $('#cod_tienda').val();
+            var tienda = $('#tienda').val();
+            var ip_servidor = $('#ip_servidor').val();
+            var nom_servidor = $('#nom_servidor').val();
+            var modelo = $('#modelo').val();
+            var serie = $('#serie').val();
+            var version_micros = $('#version_micros').val();
+            var memoria_ram = $('#memoria_ram').val();
+
+            // Crear un objeto con los datos para enviar al servidor
+            var datosKDS = {
+                cod_marca: cod_marca,
+                cod_tienda: cod_tienda,
+                tienda: tienda,
+                ip_servidor: ip_servidor,
+                nom_servidor: nom_servidor,
+                modelo: modelo,
+                serie: serie,
+                version_micros: version_micros,
+                memoria_ram: memoria_ram
+            };
+
+            // Enviar los datos al servidor usando AJAX
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("CrearServidor", "Servidor")',
+                data: datosKDS,
+                success: function(response) {
+                    // Manejar la respuesta del servidor
+                    console.log('Datos enviados correctamente');
+                    // Mostrar mensaje de guardado exitoso
+                    $('#mensajeGuardadoExitosoModal').show();
+                    // Cerrar el modal después de 2 segundos (2000 milisegundos)
+                    setTimeout(function () {
+                        $('#mensajeGuardadoExitosoModal').hide(); // Ocultar mensaje
+                        $('#modalIngresar').modal('hide'); // Cerrar el modal
+
+                        setTimeout(function() {
+                        window.location.href = '@Url.Action("ListadoServidor", "Servidor")';
+                    }, 500);
+                    }, 1000);
+                },
+                error: function(error) {
+                    // Manejar los errores
+                    console.error('Error al enviar datos', error);
+                }
+            });
+        });
+    });
+});
+
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>

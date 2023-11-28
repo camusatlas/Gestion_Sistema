@@ -49,9 +49,8 @@
                 <thead class="text-center">
                     <tr style="font-size:12px">
 
-                        <th class="text-center" style='background-color: #337ab7; color:white'>
-                            @Html.DisplayNameFor(model => model.id)
-                        </th>
+
+
                         <th class="text-center" style='background-color: #337ab7; color:white'>
                             @Html.DisplayNameFor(model => model.empresa)
                         </th>
@@ -91,9 +90,8 @@
                 {
                     <tr class="text-center" style="font-size:12px;">
 
-                        <td style="background-color: #dbd1d0; ">
-                            @item.id
-                        </td>
+
+
                         <td style="background-color: #dbd1d0; ">
                             @item.empresa
                         </td>
@@ -127,7 +125,7 @@
 
                         <td style="background-color: #dbd1d0; font-size:12px;">
 
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalActualizar">+</button>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalActualizar"><i class="bi bi-pencil"></i></button>
 
                             @Html.ActionLink("-", "EliminaKDS", new { id = item.tienda }, new { @class = "btn btn-danger" })
                         </td>
@@ -140,7 +138,7 @@
 
     </main>
 
-    <!-- Modal -->
+    <!-- Modal de Ingresar -->
 
     <div class="modal fade" id="modalIngresar" tabindex="-1" role="dialog" aria-labelledby="modalIngresarLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -376,7 +374,7 @@
                 // Enviar los datos al servidor usando AJAX
                 $.ajax({
                     type: 'POST',
-                    url: '@Url.Action("EditarKDS", "KDS")',
+                    url: '@Url.Action("CrearKDS", "KDS")',
                     data: datosKDS,
                     success: function(response) {
                         // Manejar la respuesta del servidor

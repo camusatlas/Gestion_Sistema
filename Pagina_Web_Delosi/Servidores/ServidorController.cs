@@ -24,7 +24,7 @@ namespace Pagina_Web_Delosi.Servidores
         // Agregar Nuevos Servidores
         public ActionResult CrearServidor()
         {
-            ViewBag.servidor = new SelectList(db.servidor(), "cod_marca", "cod_tienda", "tienda");
+            ViewBag.servidor = new SelectList(db.servidor());
             return View(new Servidor());
         }
 
@@ -32,7 +32,7 @@ namespace Pagina_Web_Delosi.Servidores
         public ActionResult CrearServidor(Servidor reg)
         {
             ViewBag.mensaje = db.Ingresar(reg);
-            ViewBag.servidor = new SelectList(db.servidor(), "cod_marca", "tienda");
+            ViewBag.servidor = new SelectList(db.servidor());
             return View(reg);
         }
 
@@ -41,7 +41,7 @@ namespace Pagina_Web_Delosi.Servidores
         {
             Servidor reg = db.Buscar(id);
 
-            ViewBag.servidor = new SelectList(db.servidor(), "cod_marca", "tienda");
+            ViewBag.servidor = new SelectList(db.servidor());
             return View(reg);
         }
 
@@ -49,7 +49,7 @@ namespace Pagina_Web_Delosi.Servidores
         public ActionResult Editar(Servidor reg)
         {
             ViewBag.mensaje = db.Actualizar(reg);
-            ViewBag.servidor = new SelectList(db.servidor(), "cod_marca", "tienda");
+            ViewBag.servidor = new SelectList(db.servidor());
             return View(reg);
         }
 

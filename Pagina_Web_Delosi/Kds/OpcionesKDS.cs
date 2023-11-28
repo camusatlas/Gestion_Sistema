@@ -28,7 +28,7 @@ namespace Pagina_Web_Delosi.Kds
                 {
                     EquiposKds equiposkds = new EquiposKds()
                     {
-                        id = dr.GetInt32(0),
+
                         empresa = !dr.IsDBNull(1) ? dr.GetString(1) : null,
                         marca = !dr.IsDBNull(2) ? dr.GetString(2) : null,
                         tienda = !dr.IsDBNull(3) ? dr.GetString(3) : null,
@@ -125,7 +125,7 @@ namespace Pagina_Web_Delosi.Kds
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@id", reg.id);
+
                     cmd.Parameters.AddWithValue("@empresa", reg.empresa);
                     cmd.Parameters.AddWithValue("@marca", reg.marca);
                     cmd.Parameters.AddWithValue("@tienda", reg.tienda);
@@ -165,7 +165,7 @@ namespace Pagina_Web_Delosi.Kds
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@id", reg.id);
+
                     cmd.Parameters.AddWithValue("@empresa", reg.empresa);
                     cmd.Parameters.AddWithValue("@marca", reg.marca);
                     cmd.Parameters.AddWithValue("@tienda", reg.tienda);
@@ -195,7 +195,7 @@ namespace Pagina_Web_Delosi.Kds
         }
         public EquiposKds Buscar(string id)
         {
-            return kds().FirstOrDefault(x => x.tienda == id);
+            return kds().FirstOrDefault(x => x.ip_kds == id);
         }
 
         // Eliminar KDS
@@ -207,7 +207,7 @@ namespace Pagina_Web_Delosi.Kds
                 cn.Open();
                 MySqlCommand cmd = new MySqlCommand("EliminarKDS", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@ip_kds", id);
 
                 int i = cmd.ExecuteNonQuery();
                 mensaje = $"Se ha eliminado {i} KDS";

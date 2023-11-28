@@ -47,7 +47,7 @@
 				text: 'Filtrar Columnas'
 			}
 		],
-		pageLength: 4,
+		pageLength: 10,
 
 		columnDefs: [
 			{

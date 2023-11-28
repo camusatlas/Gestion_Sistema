@@ -25,6 +25,13 @@
 
 		buttons: [
 			{
+				extend: 'Ingresar',
+
+				text: '<button type="button" data-bs-toggle="modal" data-bs-target="#modalIngresar"></button>',
+				titleAttr: 'Ingresar',
+				className: 'btn btn-primary'
+			},
+			{
 				extend: 'excelHtml5',
 				text: '<i class="fas fa-file-excel"></i> ',
 				titleAttr: 'Exportar a Excel',
@@ -47,7 +54,7 @@
 				text: 'Filtrar Columnas'
 			}
 		],
-		pageLength: 4,
+		pageLength: 10,
 
 		columnDefs: [
 			{
