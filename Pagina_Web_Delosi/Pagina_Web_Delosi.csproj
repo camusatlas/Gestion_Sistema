@@ -305,7 +305,6 @@
     <Content Include="Content\JS\JavaScriptPerfile.js" />
     <Content Include="Content\JS\JQuery.js" />
     <Content Include="Content\JS\Loaders.js" />
-    <Content Include="Content\JS\main.js" />
     <Content Include="Content\JS\Menu_desplegable.js" />
     <Content Include="Content\JS\PaginacionWorkStation.js" />
     <Content Include="Content\JS\Paginacion_KDS.js" />
