@@ -8,6 +8,7 @@
 
     <meta name="viewport" content="width=device-width" />
     <!--  -->
+    <link href="~/Content/CSS/Loaders.css" rel="stylesheet" />
     <!-- Boton de Reportes -->
     <link rel="stylesheet"
           href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
@@ -150,13 +151,14 @@
                     </td>
                     <td style="background-color: #dbd1d0; ">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalActualizar"><i class="bi bi-pencil"></i></button>
-                        @Html.ActionLink("-", "EliminaPCGErencial", new { id = item.tienda }, new { @class = "btn btn-danger" })
+                        <button class="btn btn-danger eliminar-pcgerencial" data-id="@item.tienda"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>
             }
 
         </table>
         <hr style="height:5px;" />
+
     </main>
 
     <!-- Modal Ingresar -->
@@ -325,6 +327,24 @@
         </div>
     </div>
 
+    <!-- Modal de Eliminar -->
+    <div class="modal fade" id="confirmarEliminacion" tabindex="-1" aria-labelledby="confirmarEliminacionLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmarEliminacionLabel">Confirmar eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar este PC Gerencial?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmarBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Scrip Ediciones -->
@@ -454,6 +474,35 @@
 
     </script>
 
+    <!-- scrip Eliminar -->
+    <script>
+    $('.eliminar-pcgerencial').on('click', function (e) {
+        e.preventDefault();
+
+        var tiendaId = $(this).data('id');
+
+        $('#confirmarBtn').attr('data-id', tiendaId);
+
+        $('#confirmarEliminacion').modal('show');
+    });
+
+    $('#confirmarBtn').on('click', function () {
+        var tiendaId = $(this).attr('data-id');
+
+        $.ajax({
+            url: '@Url.Action("EliminaPCGErencial", "PCGerencial")',
+            type: 'POST',
+            data: { id: tiendaId },
+            success: function (response) {
+                window.location.reload();
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    });
+    </script>
+
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -492,5 +541,6 @@
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
     <!--  -->
+    <script src="~/Content/JS/Loaders.js"></script>
 </body>
 </html>

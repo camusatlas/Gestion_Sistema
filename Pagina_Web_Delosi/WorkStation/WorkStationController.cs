@@ -19,7 +19,7 @@ namespace Pagina_Web_Delosi.WorkStation
         // Ingresar WorkSation
         public ActionResult CrearWorkSation()
         {
-            ViewBag.worksation = new SelectList(db.workstation(), "cod_marca", "cod_tienda", "tienda");
+            ViewBag.worksation = new SelectList(db.workstation());
             return View(new WorKStation());
         }
 
@@ -27,7 +27,7 @@ namespace Pagina_Web_Delosi.WorkStation
         public ActionResult CrearWorkSation(WorKStation reg)
         {
             ViewBag.mensaje = db.IngresarWorkSation(reg);
-            ViewBag.worksation = new SelectList(db.workstation(), "cod_marca", "tienda");
+            ViewBag.worksation = new SelectList(db.workstation());
             return View(reg);
         }
 
@@ -36,7 +36,7 @@ namespace Pagina_Web_Delosi.WorkStation
         {
             WorKStation reg = db.Buscar(id);
 
-            ViewBag.workstation = new SelectList(db.workstation(), "cod_marca", "tienda");
+            ViewBag.workstation = new SelectList(db.workstation());
             return View(reg);
         }
 
@@ -44,7 +44,7 @@ namespace Pagina_Web_Delosi.WorkStation
         public ActionResult Editar(WorKStation reg)
         {
             ViewBag.mensaje = db.ActualizarWorkStation(reg);
-            ViewBag.workstation = new SelectList(db.workstation(), "cod_marca", "tienda");
+            ViewBag.workstation = new SelectList(db.workstation());
             return View(reg);
         }
 
@@ -53,11 +53,11 @@ namespace Pagina_Web_Delosi.WorkStation
         {
             if (id == null)
             {
-                return RedirectToAction("ListadoServidor");
+                return RedirectToAction("ListadoWorkStation");
             }
 
             ViewBag.mensaje = db.EliminarWorkSation(id);
-            return RedirectToAction("ListadoServidor");
+            return RedirectToAction("ListadoWorkStation");
         }
 
         public ActionResult Index()

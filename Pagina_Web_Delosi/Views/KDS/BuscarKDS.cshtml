@@ -126,8 +126,7 @@
                         <td style="background-color: #dbd1d0; font-size:12px;">
 
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalActualizar"><i class="bi bi-pencil"></i></button>
-
-                            @Html.ActionLink("-", "EliminaKDS", new { id = item.tienda }, new { @class = "btn btn-danger" })
+                            <button class="btn btn-danger eliminar-kds" data-id="@item.ip_kds"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                 }
@@ -137,6 +136,27 @@
 
 
     </main>
+
+    <!-- Modal de Eliminar -->
+
+    <div class="modal fade" id="confirmarEliminacion" tabindex="-1" aria-labelledby="confirmarEliminacionLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmarEliminacionLabel">Confirmar eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar este KDS?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmarBtn">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Modal de Ingresar -->
 
@@ -227,6 +247,8 @@
                     <div id="mensajeGuardadoExitosoModal" class="alert alert-success" style="display: none;">
                         El dato se ha guardado exitosamente.
                     </div>
+
+                    <div id="mensajeErrorModal" class="alert alert-danger" style="display: none;"></div>
 
                 </div>
                 <div class="modal-footer text-center">
@@ -356,6 +378,31 @@
                 var hostname = $('#hostname').val();
                 var status = $('#status').val();
 
+                if (
+                    empresa === 'id_empresa' ||
+                    marca === 'id_marca' ||
+                    tienda.trim() === '' ||
+                    nombre_tienda.trim() === '' ||
+                    provincia.trim() === '' ||
+                    departamento.trim() === '' ||
+                    distrito.trim() === '' ||
+                    ip_kds.trim() === '' ||
+                    hostname.trim() === '' ||
+                    status === '-'
+                ) {
+                    // Mostrar mensaje de error
+                    $('#mensajeErrorModal').text('Por favor, complete todos los campos.');
+                    $('#mensajeErrorModal').show();
+
+                    setTimeout(function () {
+                        $('#mensajeErrorModal').hide(); // Ocultar el mensaje de error
+                    }, 2000);
+
+                    return;
+                } else {
+                    $('#mensajeErrorModal').hide();
+                }
+
                 // Crear un objeto con los datos para enviar al servidor
                 var datosKDS = {
                     id: id,
@@ -465,105 +512,161 @@
 
     <!-- Script Actualizar -->
     <script>
-$(document).ready(function() {
-    // Maneja el evento clic del Boton Editar en cada fila de la tabla
-    $('.btn-editar').on('click', function() {
-        var id = $(this).data('id'); // Obtener el ID del elemento a editar
+    $(document).ready(function() {
+        // Maneja el evento clic del Boton Editar en cada fila de la tabla
+        $('.btn-editar').on('click', function() {
+            var id = $(this).data('id'); // Obtener el ID del elemento a editar
 
-        // Llamar a una función que cargue los datos en el modal
-        cargarDatosEnModal(id);
-    });
-
-    // Función para cargar datos en el modal
-    function cargarDatosEnModal(id) {
-        // Realizar una petición AJAX para obtener los datos del servidor
-        $.ajax({
-            type: 'GET',
-            url: '@Url.Action("ObtenerDatosKDS", "KDS")', // Reemplaza esto con la URL correcta para obtener los datos del servidor
-            data: { id: id },
-            success: function(response) {
-                // Mostrar los datos en el modal
-                $('#modalActualizar #empresa').val(response.empresa);
-                $('#modalActualizar #marca').val(response.marca);
-                $('#modalActualizar #tienda').val(response.tienda);
-                $('#modalActualizar #nombre_tienda').val(response.nombre_tienda);
-                $('#modalActualizar #provincia').val(response.provincia);
-                $('#modalActualizar #departamento').val(response.departamento);
-                $('#modalActualizar #distrito').val(response.distrito);
-                $('#modalActualizar #ip_kds').val(response.ip_kds);
-                $('#modalActualizar #hostname').val(response.hostname);
-                $('#modalActualizar #status').val(response.status);
-
-                // Mostrar el modal de actualización
-                $('#modalActualizar').modal('show');
-            },
-            error: function(error) {
-                // Manejar errores si la solicitud falla
-                console.error('Error al obtener datos del servidor', error);
-            }
+            // Llamar a una función que cargue los datos en el modal
+            cargarDatosEnModal(id);
         });
-    }
-});
+
+        // Función para cargar datos en el modal
+        function cargarDatosEnModal(id) {
+            // Realizar una petición AJAX para obtener los datos del servidor
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("ObtenerDatosKDS", "KDS")', // Reemplaza esto con la URL correcta para obtener los datos del servidor
+                data: { id: id },
+                success: function(response) {
+                    // Mostrar los datos en el modal
+                    $('#modalActualizar #empresa').val(response.empresa);
+                    $('#modalActualizar #marca').val(response.marca);
+                    $('#modalActualizar #tienda').val(response.tienda);
+                    $('#modalActualizar #nombre_tienda').val(response.nombre_tienda);
+                    $('#modalActualizar #provincia').val(response.provincia);
+                    $('#modalActualizar #departamento').val(response.departamento);
+                    $('#modalActualizar #distrito').val(response.distrito);
+                    $('#modalActualizar #ip_kds').val(response.ip_kds);
+                    $('#modalActualizar #hostname').val(response.hostname);
+                    $('#modalActualizar #status').val(response.status);
+
+                    // Validar campos antes de mostrar el modal de actualización
+                    validarCampos(response);
+                },
+                error: function(error) {
+                    // Manejar errores si la solicitud falla
+                    console.error('Error al obtener datos del servidor', error);
+                }
+            });
+        }
+
+        // Función para validar campos antes de mostrar el modal de actualización
+        function validarCampos(response) {
+            var empresa = response.empresa;
+            var marca = response.marca;
+            var tienda = response.tienda;
+            var nombre_tienda = response.nombre_tienda;
+            var provincia = response.provincia;
+            var departamento = response.departamento;
+            var distrito = response.distrito;
+            var ip_kds = response.ip_kds;
+            var hostname = response.hostname;
+            var status = response.status;
+
+            if (
+                empresa === 'id_empresa' ||
+                marca === 'id_marca' ||
+                tienda.trim() === '' ||
+                nombre_tienda.trim() === '' ||
+                provincia.trim() === '' ||
+                departamento.trim() === '' ||
+                distrito.trim() === '' ||
+                ip_kds.trim() === '' ||
+                hostname.trim() === '' ||
+                status === '-'
+            ) {
+                // Mostrar mensaje de error
+                $('#mensajeErrorModal').text('Por favor, complete todos los campos.');
+                $('#mensajeErrorModal').show();
+
+                // Ocultar el mensaje de error después de 2 segundos (2000 milisegundos)
+                setTimeout(function () {
+                    $('#mensajeErrorModal').hide(); // Ocultar el mensaje de error
+                }, 2000);
+
+                return; // Detener el envío del formulario si los campos no están completos
+            } else {
+                $('#mensajeErrorModal').hide(); // Ocultar mensaje de error si los campos están completos
+            }
+
+            // Mostrar el modal de actualización
+            $('#modalActualizar').modal('show');
+        }
+
+        // Obtener el valor seleccionado en el campo empresa dentro del modal
+        $('#modalActualizar #empresa').change(function () {
+            var empresaSeleccionada = $(this).val();
+
+            // Llamar a la función para actualizar las opciones del campo marca según la empresa seleccionada
+            actualizarMarcasSegunEmpresa(empresaSeleccionada);
+        });
+
+        // Función para actualizar las opciones del campo marca dentro del modal
+        function actualizarMarcasSegunEmpresa(empresa) {
+            // Vaciar opciones actuales del campo marca dentro del modal
+            $('#modalActualizar #marca').empty();
+
+            // Llenar opciones de marca según la empresa seleccionada dentro del modal
+            if (empresa === 'CINDEL') {
+                agregarMarca('CH', 'CH');
+            } else if (empresa === 'DELOSI') {
+                agregarMarca('KF', 'KF');
+                agregarMarca('PB', 'PB');
+            } else if (empresa === 'LASINO') {
+                agregarMarca('SB', 'SB');
+            } else if (empresa === 'LOYSING') {
+                agregarMarca('MT', 'MT');
+            } else if (empresa === 'SAIDEL') {
+                agregarMarca('BK', 'BK');
+            } else if (empresa === 'TELEPIZZA ANDINA') {
+                agregarMarca('PH', 'PH');
+            }
+
+            // Agregar opción por defecto al campo marca dentro del modal
+            $('#modalActualizar #marca').prepend($('<option>', {
+                value: 'id_marca',
+                text: '[Seleccione]'
+            })).val('id_marca');
+        }
+
+        // Función para agregar una opción de marca al campo marca dentro del modal
+        function agregarMarca(value, text) {
+            $('#modalActualizar #marca').append($('<option>', {
+                value: value,
+                text: text
+            }));
+        }
+    });
     </script>
     <script>
-        $(document).ready(function () {
-            // Obtener el valor seleccionado en el campo empresa
-            $('#modalActualizar #empresa').change(function () {
-                var empresaSeleccionada = $(this).val();
 
-                // Aquí debes rellenar las opciones del campo marca según la empresa seleccionada
-                actualizarMarcasSegunEmpresa(empresaSeleccionada);
-            });
+        $('.eliminar-kds').on('click', function (e) {
+    e.preventDefault();
 
-            // Función para actualizar las opciones del campo marca
-            function actualizarMarcasSegunEmpresa(empresa) {
-                // Vaciar opciones actuales
-                $('#modalActualizar #marca').empty();
+    var servidorId = $(this).data('id');
 
-                // Llenar opciones de marca según la empresa seleccionada
-                if (empresa === 'CINDEL') {
-                    $('#modalActualizar #marca').append($('<option>', {
-                        value: 'CH',
-                        text: 'CH'
-                    }));
-                } else if (empresa === 'DELOSI') {
-                    $('#modalActualizar #marca').append($('<option>', {
-                        value: 'KF',
-                        text: 'KF'
-                    }));
-                    $('#modalActualizar #marca').append($('<option>', {
-                        value: 'PB',
-                        text: 'PB'
-                    }));
-                } else if (empresa === 'LASINO') {
-                    $('#modalActualizar #marca').append($('<option>', {
-                        value: 'SB',
-                        text: 'SB'
-                    }));
-                } else if (empresa === 'LOYSING') {
-                    $('#modalActualizar #marca').append($('<option>', {
-                        value: 'MT',
-                        text: 'MT'
-                    }));
-                } else if (empresa === 'SAIDEL') {
-                    $('#modalActualizar #marca').append($('<option>', {
-                        value: 'BK',
-                        text: 'BK'
-                    }));
-                } else if (empresa === 'TELEPIZZA ANDINA') {
-                    $('#modalActualizar #marca').append($('<option>', {
-                        value: 'PH',
-                        text: 'PH'
-                    }));
-                }
+    $('#confirmarBtn').attr('data-id', servidorId);
 
-                // Agregar opción por defecto
-                $('#modalActualizar #marca').prepend($('<option>', {
-                    value: 'id_marca',
-                    text: '[Seleccione]'
-                })).val('id_marca');
-            }
-        });
+    $('#confirmarEliminacion').modal('show');
+});
+
+$('#confirmarBtn').on('click', function () {
+    var servidorId = $(this).attr('data-id');
+
+    $.ajax({
+        url: '@Url.Action("EliminaKDS", "KDS")',
+        type: 'POST',
+        data: { id: servidorId },
+        success: function (response) {
+            window.location.reload();
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    });
+});
+
     </script>
 
 

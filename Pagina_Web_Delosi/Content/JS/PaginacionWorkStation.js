@@ -47,55 +47,9 @@
 				text: 'Filtrar Columnas'
 			}
 		],
-		pageLength: 10,
+		pageLength: 10
 
-		columnDefs: [
-			{
-				target: 0,
-				visible: false,
-				searchable: false
-			},
-			{
-				target: 1,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 9,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 10,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 11,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 12,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 13,
-				visible: false,
-				searchable: false,
-			},
-			{
-				target: 14,
-				visible: false,
-				searchable: false,
-
-				{
-				target: 14,
-				visible: false,
-				searchable: false,
-			},
-		],
+		
 
 	});
 });

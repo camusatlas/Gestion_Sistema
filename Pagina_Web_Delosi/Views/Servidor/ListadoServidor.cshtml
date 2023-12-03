@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "ListadoServidor";
 }
+
 <!DOCTYPE html>
 
 <html>
@@ -196,7 +197,7 @@
 
                     <td style="background-color: #dbd1d0; font-size:12px;">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalActualizar"><i class="bi bi-pencil"></i></button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmarEliminacion"><i class="bi bi-trash"></i></button>
+                        <button class="btn btn-danger eliminar-servisor" data-id="@item.tienda"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>
             }
@@ -363,7 +364,7 @@
         </div>
     </div>
 
-
+    <!-- Modal de Eliminar -->
     <div class="modal fade" id="confirmarEliminacion" tabindex="-1" aria-labelledby="confirmarEliminacionLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -372,7 +373,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ¿Estás seguro de que deseas eliminar este servidor?
+                    ¿Estás seguro de que deseas eliminar este Servidor?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -505,43 +506,32 @@ $(document).ready(function() {
 });
     </script>
     <!-- Eliminar -->
-    <!-- JavaScript/jQuery para gestionar la confirmación de eliminación -->
     <script>
-        $(document).ready(function () {
-            $('.eliminar-servidor').on('click', function (e) {
-                e.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+                $('.eliminar-servisor').on('click', function (e) {
+    e.preventDefault();
 
-                var deleteUrl = $(this).attr('href'); // Obtener la URL de eliminación desde el enlace
-                var servidorId = $(this).data('id'); // Obtener el ID del servidor a eliminar
+    var servidorId = $(this).data('id');
 
-                // Asignar la URL y el ID del servidor al botón de confirmación
-                $('#confirmarBtn').attr('data-url', deleteUrl);
-                $('#confirmarBtn').attr('data-id', servidorId);
+    $('#confirmarBtn').attr('data-id', servidorId);
 
-                $('#confirmarEliminacion').modal('show'); // Mostrar el modal de confirmación
-            });
+    $('#confirmarEliminacion').modal('show');
+});
 
-            $('#confirmarBtn').on('click', function () {
-                var deleteUrl = $(this).attr('data-url'); // Obtener la URL de eliminación del botón de confirmación
-                var servidorId = $(this).attr('data-id'); // Obtener el ID del servidor a eliminar
+$('#confirmarBtn').on('click', function () {
+    var servidorId = $(this).attr('data-id');
 
-                // Realizar una solicitud AJAX al método de eliminación del controlador
-                $.ajax({
-                    url: deleteUrl,
-                    type: 'POST', // O el método HTTP utilizado en tu controlador
-                    data: { id: servidorId }, // Datos que se enviarán al controlador
-                    success: function (response) {
-                        // Manejar la respuesta del servidor después de eliminar el servidor
-                        // Redirigir a la página deseada o actualizar la vista, etc.
-                        window.location.reload(); // Ejemplo: recargar la página
-                    },
-                    error: function (xhr, status, error) {
-                        // Manejar errores en caso de que ocurran durante la solicitud
-                        console.log(error);
-                    }
-                });
-            });
-        });
+    $.ajax({
+        url: '@Url.Action("Elimina", "Servidor")',
+        type: 'POST',
+        data: { id: servidorId },
+        success: function (response) {
+            window.location.reload();
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    });
+});
     </script>
 
 

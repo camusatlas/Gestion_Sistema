@@ -73,6 +73,17 @@ namespace Pagina_Web_Delosi.Kds
         }
 
         // Actualizar KDS
+        public ActionResult ObtenerDatosKDS(string id)
+        {
+            EquiposKds equipo = db.Buscar(id); // Utiliza tu método para buscar el equipo por ID
+
+            // Retornar los datos como un objeto JSON
+            return Json(equipo, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
         public ActionResult EditarKDS(string id)
         {
             EquiposKds reg = db.Buscar(id);

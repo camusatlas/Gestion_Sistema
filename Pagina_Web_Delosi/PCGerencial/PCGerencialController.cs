@@ -27,7 +27,7 @@ namespace Pagina_Web_Delosi.PCGerencial
         public ActionResult CrearPCGerencial(PCGerencial reg)
         {
             ViewBag.mensaje = db.IngresarPCGerencial(reg);
-            ViewBag.pcgerencial = new SelectList(db.pcgerencial(), "cod_marca", "tienda");
+            ViewBag.pcgerencial = new SelectList(db.pcgerencial());
             return View(reg);
         }
 
@@ -36,7 +36,7 @@ namespace Pagina_Web_Delosi.PCGerencial
         {
             PCGerencial reg = db.Buscar(id);
 
-            ViewBag.pcgerencial = new SelectList(db.pcgerencial(), "cod_marca", "tienda");
+            ViewBag.pcgerencial = new SelectList(db.pcgerencial());
             return View(reg);
         }
 
@@ -44,7 +44,7 @@ namespace Pagina_Web_Delosi.PCGerencial
         public ActionResult EditarPCGerencial(PCGerencial reg)
         {
             ViewBag.mensaje = db.ActualizarPCGerencial(reg);
-            ViewBag.pcgerencial = new SelectList(db.pcgerencial(), "cod_marca", "tienda");
+            ViewBag.pcgerencial = new SelectList(db.pcgerencial());
             return View(reg);
         }
 
@@ -53,11 +53,11 @@ namespace Pagina_Web_Delosi.PCGerencial
         {
             if (id == null)
             {
-                return RedirectToAction("ListadoServidor");
+                return RedirectToAction("ListadoPCGerencial");
             }
 
             ViewBag.mensaje = db.Eliminar(id);
-            return RedirectToAction("ListadoServidor");
+            return RedirectToAction("ListadoPCGerencial");
         }
 
         public ActionResult Index()
