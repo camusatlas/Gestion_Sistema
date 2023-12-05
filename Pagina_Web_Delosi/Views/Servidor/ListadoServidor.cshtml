@@ -196,7 +196,7 @@
                     </td>
 
                     <td style="background-color: #dbd1d0; font-size:12px;">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalActualizar"><i class="bi bi-pencil"></i></button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalActualizar" data-id="@item.tienda"><i class="bi bi-pencil"></i></button>
                         <button class="btn btn-danger eliminar-servisor" data-id="@item.tienda"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>
@@ -447,63 +447,49 @@
     </script>
     <!-- Script Actualizar -->
     <script>
-$(document).ready(function() {
-    // Maneja el evento clic del Boton Crear dentro del modal
-    $('#modalActualizar').on('shown.bs.modal', function() {
-        $('#guardarButtonn').off('click').on('click', function (event) {
-            event.preventDefault();
-            // Obtener los valores de los campos del formulario
-            var cod_marca = $('#cod_marca').val();
-            var cod_tienda = $('#cod_tienda').val();
-            var tienda = $('#tienda').val();
-            var ip_servidor = $('#ip_servidor').val();
-            var nom_servidor = $('#nom_servidor').val();
-            var modelo = $('#modelo').val();
-            var serie = $('#serie').val();
-            var version_micros = $('#version_micros').val();
-            var memoria_ram = $('#memoria_ram').val();
+// Manejar el evento de clic en el botón de editar en la tabla
+$('.btn-success').on('click', function() {
+    var itemId = $(this).data('id'); // Obtener el ID del elemento a editar
+    var cod_marca = $('#cod_marca').val();
+    var cod_tienda = $('#cod_tienda').val();
+    var tienda = $('#tienda').val();
+    var ip_servidor = $('#ip_servidor').val();
+    var nom_servidor = $('#nom_servidor').val();
+    var modelo = $('#modelo').val();
+    var serie = $('#serie').val();
+    var version_micros = $('#version_micros').val();
+    var memoria_ram = $('#memoria_ram').val();
 
-            // Crear un objeto con los datos para enviar al servidor
-            var datosKDS = {
-                cod_marca: cod_marca,
-                cod_tienda: cod_tienda,
-                tienda: tienda,
-                ip_servidor: ip_servidor,
-                nom_servidor: nom_servidor,
-                modelo: modelo,
-                serie: serie,
-                version_micros: version_micros,
-                memoria_ram: memoria_ram
-            };
 
-            // Enviar los datos al servidor usando AJAX
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("Editar", "Servidor")',
-                data: datosKDS,
-                success: function(response) {
-                    // Manejar la respuesta del servidor
-                    console.log('Datos enviados correctamente');
-                    // Mostrar mensaje de guardado exitoso
-                    $('#mensajeGuardadoExitosoModal').show();
-                    // Cerrar el modal después de 2 segundos (2000 milisegundos)
-                    setTimeout(function () {
-                        $('#mensajeGuardadoExitosoModal').hide(); // Ocultar mensaje
-                        $('#modalIngresar').modal('hide'); // Cerrar el modal
+    // Realizar una petición AJAX para obtener los datos correspondientes al ID seleccionado
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("Editar", "Servidor")', // Reemplaza por tu ruta de obtención de datos
+        data: {
+            id: itemId,
+            cod_marca: cod_marca,
+            cod_tienda: cod_tienda,
+            tienda: itemId,
+            ip_servidor: ip_servidor,
+            nom_servidor: nom_servidor,
+            modelo: modelo,
+            serie: serie,
+            version_micros: version_micros,
+            memoria_ram: memoria_ram    
+        },
+        success: function(response) {
+            // Llenar los campos del formulario con los datos obtenidos
 
-                        setTimeout(function() {
-                        window.location.href = '@Url.Action("ListadoServidor", "Servidor")';
-                    }, 500);
-                    }, 1000);
-                },
-                error: function(error) {
-                    // Manejar los errores
-                    console.error('Error al enviar datos', error);
-                }
-            });
-        });
+
+            // Mostrar el modal de edición
+            $('#modalActualizar').modal('show');
+        },
+        error: function(error) {
+            console.error('Error al obtener datos para edición', error);
+        }
     });
 });
+
     </script>
     <!-- Eliminar -->
     <script>
